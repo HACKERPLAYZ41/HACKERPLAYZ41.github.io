@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .carousel {
+            position: relative;
+            width: 80%;
+            max-width: 600px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .carousel img {
+            width: 100%;
+            height: auto;
+        }
+        .carousel-content {
+            padding: 15px;
+            text-align: center;
+        }
+        .carousel-content h2 {
+            margin: 0 0 10px;
+        }
+        .carousel-content p {
+            margin: 0;
+        }
+        .carousel-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: #333;
+        }
+        .carousel-controls button {
+            background: #ff4757;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .carousel-controls button:hover {
+            background: #e84118;
+        }
+        .liked-section {
+            margin-top: 20px;
+            padding: 15px;
+            width: 80%;
+            max-width: 600px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .liked-section h2 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="carousel">
+        <img id="carImage" src="" alt="Car Image">
+        <div class="carousel-content">
+            <h2 id="carName">Car Name</h2>
+            <p id="carDetails">Car details will be displayed here.</p>
+        </div>
+        <div class="carousel-controls">
+            <button id="prevButton">Prev</button>
+            <button id="likeButton">Like</button>
+            <button id="nextButton">Next</button>
+        </div>
+    </div>
+    <div class="liked-section" id="likedSection" style="display: none;">
+        <h2>Liked Car Details</h2>
+        <p id="likedCarDetails">No car liked yet.</p>
+    </div>
+
+    <script>
+            const cars = [
+    {
+        name: "Mustang GT 1969",
+        image: "https://i.imgur.com/mR5HyaV.jpeg",
+        details: "A classic American muscle car with a V8 engine."
+    },
+    {
+        name: "Chevrolet Camaro ZL1",
+        image: "https://i.imgur.com/ULNXkhi.jpeg",
+        details: "A high-performance sports car with aggressive styling."
+    },
+    {
+        name: "Dodge Challenger Hellcat",
+        image: "https://i.imgur.com/l26Zzw9.jpeg",
+        details: "A beastly car with over 700 horsepower."
+    },
+    {
+        name: "Mustang Mach 1 1971",
+        image: "https://i.imgur.com/FyQ8kRZ.jpeg",
+        details: "An iconic muscle car with stunning retro design."
+    },
+    {
+        name: "Porsche 911 Turbo",
+        image: "https://i.imgur.com/FPtDlnD.jpeg",
+        details: "An iconic sports car with refined performance."
+    },
+    {
+        name: "Ferrari F8 Tributo",
+        image: "https://i.imgur.com/DQ8sOOR.jpeg",
+        details: "A supercar with stunning design and power."
+    },
+    {
+        name: "Lamborghini Aventador",
+        image: "https://i.imgur.com/XmMuD3I.jpeg",
+        details: "A flagship supercar with an unmistakable presence."
+    },
+    {
+        name: "Aston Martin DB11",
+        image: "https://i.imgur.com/ADy6iya.jpeg",
+        details: "A grand tourer with timeless elegance."
+    },
+    {
+        name: "BMW M4 Competition",
+        image: "https://i.imgur.com/BR0L4Oi.jpeg",
+        details: "A high-performance coupe with cutting-edge tech."
+    },
+    {
+        name: "Audi R8 V10",
+        image: "https://i.imgur.com/fRdJiWb.jpeg",
+        details: "A sleek supercar with a roaring V10 engine."
+    }
+];
+
+
+        let currentIndex = 0;
+        const carImage = document.getElementById("carImage");
+        const carName = document.getElementById("carName");
+        const carDetails = document.getElementById("carDetails");
+        const likedSection = document.getElementById("likedSection");
+        const likedCarDetails = document.getElementById("likedCarDetails");
+
+        function updateCarousel() {
+            carImage.src = cars[currentIndex].image;
+            carName.textContent = cars[currentIndex].name;
+            carDetails.textContent = cars[currentIndex].details;
+        }
+
+        document.getElementById("prevButton").addEventListener("click", () => {
+            currentIndex = (currentIndex - 1 + cars.length) % cars.length;
+            updateCarousel();
+        });
+
+        document.getElementById("nextButton").addEventListener("click", () => {
+            currentIndex = (currentIndex + 1) % cars.length;
+            updateCarousel();
+        });
+
+        document.getElementById("likeButton").addEventListener("click", () => {
+            likedSection.style.display = "block";
+            likedCarDetails.textContent = `You liked the ${cars[currentIndex].name}: ${cars[currentIndex].details}`;
+        });
+
+        // Initialize the carousel
+        updateCarousel();
+    </script>
+</body>
+</html>

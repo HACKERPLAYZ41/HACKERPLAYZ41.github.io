@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar System Animation</title>
+    <style>
+        body {
+            margin: 0;
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+        .solar-system {
+            position: relative;
+            width: 800px;
+            height: 800px;
+        }
+        .sun {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 120px;
+            height: 120px;
+            background: yellow;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 40px 20px yellow;
+        }
+        .planet, .moon {
+            position: absolute;
+            border-radius: 50%;
+        }
+        .planet {
+            box-shadow: 0 0 15px 3px rgba(255, 255, 255, 0.6);
+        }
+        .earth {
+            background: blue;
+            width: 40px;
+            height: 40px;
+        }
+        .moon {
+            background: gray;
+            width: 15px;
+            height: 15px;
+        }
+        .mars {
+            background: red;
+            width: 30px;
+            height: 30px;
+        }
+        .venus {
+            background: orange;
+            width: 35px;
+            height: 35px;
+        }
+        .jupiter {
+            background: brown;
+            width: 70px;
+            height: 70px;
+        }
+        .label {
+            position: absolute;
+            color: white;
+            font-size: 12px;
+            text-align: center;
+            transform: translate(-50%, -50%);
+        }
+        .info {
+            position: absolute;
+            bottom: 10%;
+            text-align: center;
+            width: 100%;
+            color: white;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="solar-system">
+        <!-- Sun -->
+        <div class="sun">
+            <div class="label" style="top: 120%; left: 50%;">Sun</div>
+        </div>
+        <!-- Earth -->
+        <div class="planet earth">
+            <div class="label" style="top: -20px; left: 50%;">Earth</div>
+        </div>
+        <!-- Moon -->
+        <div class="moon">
+            <div class="label" style="top: -20px; left: 50%;">Moon</div>
+        </div>
+        <!-- Mars -->
+        <div class="planet mars">
+            <div class="label" style="top: -20px; left: 50%;">Mars</div>
+        </div>
+        <!-- Venus -->
+        <div class="planet venus">
+            <div class="label" style="top: -20px; left: 50%;">Venus</div>
+        </div>
+        <!-- Jupiter -->
+        <div class="planet jupiter">
+            <div class="label" style="top: -20px; left: 50%;">Jupiter</div>
+        </div>
+        <div class="info">The Solar System 🌞🌍🌕</div>
+    </div>
+
+    <script>
+        const earth = document.querySelector('.earth');
+        const moon = document.querySelector('.moon');
+        const mars = document.querySelector('.mars');
+        const venus = document.querySelector('.venus');
+        const jupiter = document.querySelector('.jupiter');
+
+        // Unique orbit radii for each planet and moon
+        const orbitRadiusEarth = 200;
+        const orbitRadiusMoon = 40;
+        const orbitRadiusMars = 300;
+        const orbitRadiusVenus = 150;
+        const orbitRadiusJupiter = 400;
+
+        // Speed of each body's rotation (adjusted for smooth motion)
+        const orbitSpeedEarth = 0.01;
+        const orbitSpeedMoon = 0.05;
+        const orbitSpeedMars = 0.008;
+        const orbitSpeedVenus = 0.009;
+        const orbitSpeedJupiter = 0.005;
+
+        let angleEarth = 0;
+        let angleMoon = 0;
+        let angleMars = 0;
+        let angleVenus = 0;
+        let angleJupiter = 0;
+
+        function animatePlanets() {
+            // Earth
+            angleEarth += orbitSpeedEarth;
+            const xEarth = Math.cos(angleEarth) * orbitRadiusEarth;
+            const yEarth = Math.sin(angleEarth) * orbitRadiusEarth;
+            earth.style.transform = `translate(${400 + xEarth}px, ${400 + yEarth}px)`;
+
+            // Moon revolving around Earth
+            angleMoon += orbitSpeedMoon;
+            const xMoon = xEarth + Math.cos(angleMoon) * orbitRadiusMoon;
+            const yMoon = yEarth + Math.sin(angleMoon) * orbitRadiusMoon;
+            moon.style.transform = `translate(${400 + xMoon}px, ${400 + yMoon}px)`;
+
+            // Mars
+            angleMars += orbitSpeedMars;
+            const xMars = Math.cos(angleMars) * orbitRadiusMars;
+            const yMars = Math.sin(angleMars) * orbitRadiusMars;
+            mars.style.transform = `translate(${400 + xMars}px, ${400 + yMars}px)`;
+
+            // Venus
+            angleVenus += orbitSpeedVenus;
+            const xVenus = Math.cos(angleVenus) * orbitRadiusVenus;
+            const yVenus = Math.sin(angleVenus) * orbitRadiusVenus;
+            venus.style.transform = `translate(${400 + xVenus}px, ${400 + yVenus}px)`;
+
+            // Jupiter
+            angleJupiter += orbitSpeedJupiter;
+            const xJupiter = Math.cos(angleJupiter) * orbitRadiusJupiter;
+            const yJupiter = Math.sin(angleJupiter) * orbitRadiusJupiter;
+            jupiter.style.transform = `translate(${400 + xJupiter}px, ${400 + yJupiter}px)`;
+
+            requestAnimationFrame(animatePlanets);
+        }
+
+        animatePlanets();
+    </script>
+</body>
+</html>
