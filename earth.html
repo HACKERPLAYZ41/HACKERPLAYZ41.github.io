@@ -110,28 +110,28 @@
     </div>
 
     <script>
-        const earth = document.querySelector('.earth');
-        const moon = document.querySelector('.moon');
+        const you = document.querySelector('.earth');
+        const me = document.querySelector('.moon');
         const mars = document.querySelector('.mars');
         const venus = document.querySelector('.venus');
         const jupiter = document.querySelector('.jupiter');
 
         // Unique orbit radii for each planet and moon
-        const orbitRadiusEarth = 200;
-        const orbitRadiusMoon = 40;
+        const orbitRadiusyou = 200;
+        const orbitRadiusMe = 40;
         const orbitRadiusMars = 300;
         const orbitRadiusVenus = 150;
         const orbitRadiusJupiter = 400;
 
         // Speed of each body's rotation (adjusted for smooth motion)
-        const orbitSpeedEarth = 0.01;
-        const orbitSpeedMoon = 0.05;
+        const orbitSpeedyou = 0.01;
+        const orbitSpeedMe = 0.05;
         const orbitSpeedMars = 0.008;
         const orbitSpeedVenus = 0.009;
         const orbitSpeedJupiter = 0.005;
 
-        let angleEarth = 0;
-        let angleMoon = 0;
+        let angleyou = 0;
+        let angleMe = 0;
         let angleMars = 0;
         let angleVenus = 0;
         let angleJupiter = 0;
@@ -139,14 +139,14 @@
         function animatePlanets() {
             // Earth
             angleEarth += orbitSpeedEarth;
-            const xEarth = Math.cos(angleyou) * orbitRadiusEarth;
-            const yEarth = Math.sin(angleyou) * orbitRadiusEarth;
+            const xYou = Math.cos(angleyou) * orbitRadiusEarth;
+            const yYou = Math.sin(angleyou) * orbitRadiusEarth;
             earth.style.transform = `translate(${400 + xEarth}px, ${400 + yEarth}px)`;
 
             // Moon revolving around Earth
             angleMoon += orbitSpeedMoon;
-            const xMoon = xEarth + Math.cos(angleMe) * orbitRadiusMoon;
-            const yMoon = yEarth + Math.sin(angleme) * orbitRadiusMoon;
+            const xMe = xEarth + Math.cos(angleMe) * orbitRadiusMoon;
+            const yMe = yEarth + Math.sin(angleme) * orbitRadiusMoon;
             moon.style.transform = `translate(${400 + xMoon}px, ${400 + yMoon}px)`;
 
             // Mars
