@@ -139,14 +139,14 @@
         function animatePlanets() {
             // Earth
             angleEarth += orbitSpeedEarth;
-            const xEarth = Math.cos(angleEarth) * orbitRadiusEarth;
-            const yEarth = Math.sin(angleEarth) * orbitRadiusEarth;
+            const xEarth = Math.cos(angleyou) * orbitRadiusEarth;
+            const yEarth = Math.sin(angleyou) * orbitRadiusEarth;
             earth.style.transform = `translate(${400 + xEarth}px, ${400 + yEarth}px)`;
 
             // Moon revolving around Earth
             angleMoon += orbitSpeedMoon;
-            const xMoon = xEarth + Math.cos(angleMoon) * orbitRadiusMoon;
-            const yMoon = yEarth + Math.sin(angleMoon) * orbitRadiusMoon;
+            const xMoon = xEarth + Math.cos(angleMe) * orbitRadiusMoon;
+            const yMoon = yEarth + Math.sin(angleme) * orbitRadiusMoon;
             moon.style.transform = `translate(${400 + xMoon}px, ${400 + yMoon}px)`;
 
             // Mars
