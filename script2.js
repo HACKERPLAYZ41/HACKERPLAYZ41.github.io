@@ -9,7 +9,7 @@ const PHOTOS = [
 const photoGrid = document.getElementById("photoGrid");
 PHOTOS.forEach(photo => {
     const img = document.createElement("img");
-    img.src = `photos/${photo}`;  // Ensure photos are in a 'photos' folder
+    img.src = `photo/${photo}`;  // Ensure photos are in a 'photos' folder
     photoGrid.appendChild(img);
 });
 
