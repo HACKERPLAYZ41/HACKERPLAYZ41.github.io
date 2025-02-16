@@ -1,9 +1,8 @@
 // Personalize these!
 const HER_NAME = "Shruti Shukla";
 const PHOTOS = [
-     "shruti1.png",  // Add her photo filenames here
+    "shruti1.png",  // Add her photo filenames here
     "1739522381670.jpg",
-    "photo3.jpg",
 ];
 
 // Load photos
@@ -17,5 +16,9 @@ PHOTOS.forEach(photo => {
 // Show surprise message
 function showSurprise() {
     const surpriseDiv = document.getElementById("surprise");
-    surpriseDiv.textContent = "Wishing you a day filled with joy and laughter! 🎉";
+    surpriseDiv.innerHTML = `
+        <p>🕉️ <strong>Lord Krishna says:</strong> "You are never alone. I am always with you, guiding you."</p>
+        <p>🔱 <strong>Mahadev says:</strong> "Stay strong, for every challenge is a step towards greatness."</p>
+        <p>🌟 May your life be filled with divine blessings, ${HER_NAME}! 🌟</p>
+    `;
 }
