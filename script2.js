@@ -1,5 +1,5 @@
 // Personalize these!
-const HER_NAME = "Shruti Shukla";
+const HER_NAME = "Shruti!";
 const PHOTOS = [
     "1739522381670.jpg",  // Add her photo filenames here
     "shruti1.png",
