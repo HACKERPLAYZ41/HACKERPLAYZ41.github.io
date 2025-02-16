@@ -1,8 +1,8 @@
 // Personalize these!
 const HER_NAME = "Shruti Shukla";
 const PHOTOS = [
-    "https://iili.io/2pF6Vbs.png",  // Add her photo filenames here
-    "https://iili.io/2pF6G5X.jpg",
+    "1739522381670.jpg",  // Add her photo filenames here
+    "shruti1.png",
 ];
 
 // Load photos
