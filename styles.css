@@ -94,3 +94,27 @@ button:hover {
     from { transform: translateY(-20px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
 }
+/* ... (keep previous styles) */
+
+/* Photo Grid Adjustments */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Wider columns */
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.photo-grid img {
+    width: 100%; /* Full width of the grid cell */
+    height: auto; /* Let the height adjust automatically */
+    max-height: 300px; /* Optional: Set a max height to prevent overly tall images */
+    object-fit: contain; /* Show full image without cropping */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background: #f0f0f0; /* Fallback if image fails to load */
+    transition: transform 0.3s ease;
+}
+
+.photo-grid img:hover {
+    transform: scale(1.05);
+}
