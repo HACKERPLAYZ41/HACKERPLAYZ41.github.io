@@ -55,10 +55,17 @@
             margin-bottom: 2rem;
             background-color: white;
             height: 100%;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .project-card.animated {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .project-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-10px) !important;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         }
 
@@ -84,6 +91,8 @@
             font-weight: 500;
             margin-right: 0.5rem;
             margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-size: 0.75rem;
         }
 
         .btn-primary {
@@ -164,6 +173,35 @@
             .project-card img {
                 height: 150px;
             }
+            
+            .project-card .card-body {
+                padding: 1rem;
+            }
+            
+            .btn {
+                font-size: 0.9rem;
+                padding: 0.5rem 1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .project-header h1 {
+                font-size: 2rem;
+            }
+            
+            .project-header p {
+                font-size: 1rem;
+            }
+            
+            .d-flex.justify-content-between {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .d-flex.justify-content-between .btn {
+                width: 100%;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -211,20 +249,18 @@
                 <!-- Project 1 -->
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="project-card">
-                        <img src="https://iili.io/FQJ2PFn.png" alt="birthdayhtml">
+                        <img src="https://iili.io/FQJ2PFn.png" alt="Birthday Gift Website">
                         <div class="card-body">
-                            <h3 class="card-title">BIRTHDAY GIFT </h3>
-                            <p class="card-text">A SMALL GIFT IT WAS OPEN SOUCRE I JUST EDITED SOMETHINGS</p>
+                            <h3 class="card-title">Birthday Gift</h3>
+                            <p class="card-text">A small gift website that was open source. I just edited some things.</p>
                             <div class="mb-3">
                                 <span class="badge tech-badge">HTML</span>
                                 <span class="badge tech-badge">CSS</span>
                                 <span class="badge tech-badge">JavaScript</span>
                             </div>
                             <div class="d-flex justify-content-between">
-                                <a href="https://hackerplayz41.github.io/lala.html" class="btn btn-primary">View
-                                    Project</a>
-                                <a href="https://github.com/HACKERPLAYZ41/HACKERPLAYZ41.github.io/blob/main/lala.html"
-                                    class="btn btn-outline-primary">View Code</a>
+                                <a href="https://hackerplayz41.github.io/lala.html" class="btn btn-primary">View Project</a>
+                                <a href="https://github.com/HACKERPLAYZ41/HACKERPLAYZ41.github.io/blob/main/lala.html" class="btn btn-outline-primary">View Code</a>
                             </div>
                         </div>
                     </div>
@@ -233,20 +269,18 @@
                 <!-- Project 2 -->
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="project-card">
-                        <img src="https://iili.io/FQX1BaV.png" alt="Task Manager">
+                        <img src="https://iili.io/FQX1BaV.png" alt="Solar System Simulation">
                         <div class="card-body">
-                            <h3 class="card-title">solar systum simulation</h3>
-                            <p class="card-text">solar systum simulation of some planets with some love</p>
+                            <h3 class="card-title">Solar System Simulation</h3>
+                            <p class="card-text">Solar system simulation of some planets with interactive elements.</p>
                             <div class="mb-3">
-                                <span class="badge tech-badge">Html</span>
-                                <span class="badge tech-badge">Css</span>
+                                <span class="badge tech-badge">HTML</span>
+                                <span class="badge tech-badge">CSS</span>
                                 <span class="badge tech-badge">JavaScript</span>
                             </div>
                             <div class="d-flex justify-content-between">
-                                <a href="https://HACKERPLAYZ41.github.io/earth.html" class="btn btn-primary">View
-                                    Project</a>
-                                <a href="https://github.com/HACKERPLAYZ41/HACKERPLAYZ41.github.io/blob/main/earth.html"
-                                    class="btn btn-outline-primary">View Code</a>
+                                <a href="https://HACKERPLAYZ41.github.io/earth.html" class="btn btn-primary">View Project</a>
+                                <a href="https://github.com/HACKERPLAYZ41/HACKERPLAYZ41.github.io/blob/main/earth.html" class="btn btn-outline-primary">View Code</a>
                             </div>
                         </div>
                     </div>
@@ -255,19 +289,18 @@
                 <!-- Project 3 -->
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="project-card">
-                        <img src="https://iili.io/FQXIjaa.png" alt="API Service">
+                        <img src="https://iili.io/FQXIjaa.png" alt="Promotion Website">
                         <div class="card-body">
-                            <h3 class="card-title">PROMOTION WEBSITE</h3>
-                            <p class="card-text">Custom API with authentication, rate limiting, and documentation and
-                                proper seo and mailgun for smtp and discord webhook for alert.</p>
+                            <h3 class="card-title">Promotion Website</h3>
+                            <p class="card-text">Custom API with authentication, rate limiting, and documentation with proper SEO, Mailgun for SMTP, and Discord webhook for alerts.</p>
                             <div class="mb-3">
                                 <span class="badge tech-badge">React.js</span>
-                                <span class="badge tech-badge">php</span>
+                                <span class="badge tech-badge">PHP</span>
                                 <span class="badge tech-badge">JWT</span>
-                                <span class="badge tech-badge">firebase</span>
+                                <span class="badge tech-badge">Firebase</span>
                                 <span class="badge tech-badge">MySQL</span>
                                 <span class="badge tech-badge">HTML</span>
-                                <span class="badge tech-badge">css</span>
+                                <span class="badge tech-badge">CSS</span>
                             </div>
                             <div class="d-flex justify-content-between">
                                 <a href="https://vsmehandi.art" class="btn btn-primary">View Project</a>
@@ -279,10 +312,10 @@
                 <!-- Project 4 -->
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="project-card">
-                        <img src="https://iili.io/FQ2gkes.png" alt="Portfolio">
+                        <img src="https://iili.io/FQ2gkes.png" alt="Portfolio Website">
                         <div class="card-body">
                             <h3 class="card-title">Portfolio Website</h3>
-                            <p class="card-text">Responsive portfolio and smooth animations.</p>
+                            <p class="card-text">Responsive portfolio with smooth animations.</p>
                             <div class="mb-3">
                                 <span class="badge tech-badge">HTML5</span>
                                 <span class="badge tech-badge">CSS3</span>
@@ -291,8 +324,7 @@
                             </div>
                             <div class="d-flex justify-content-between">
                                 <a href="https://hackerplayz41.github.io" class="btn btn-primary">View Project</a>
-                                <a href="https://github.com/HACKERPLAYZ41/HACKERPLAYZ41.github.io/blob/main/index.html"
-                                    class="btn btn-outline-primary">View Code</a>
+                                <a href="https://github.com/HACKERPLAYZ41/HACKERPLAYZ41.github.io/blob/main/index.html" class="btn btn-outline-primary">View Code</a>
                             </div>
                         </div>
                     </div>
@@ -301,59 +333,79 @@
                 <!-- Project 5 -->
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="project-card">
-                        <img src="https://iili.io/FQWWjRV.png" alt="Discord profile finder">
+                        <img src="https://iili.io/FQWWjRV.png" alt="Discord Profile Finder">
                         <div class="card-body">
-                            <h3 class="card-title">Real-time Discord profile finder</h3>
-                            <p class="card-text">Discord profile viewer with bot API integration and fallback to Discord
-                                public API.</p>
+                            <h3 class="card-title">Real-time Discord Profile Finder</h3>
+                            <p class="card-text">Discord profile viewer with bot API integration and fallback to Discord public API.</p>
                             <div class="mb-3">
                                 <span class="badge tech-badge">HTML</span>
-                                <span class="badge tech-badge">Css</span>
+                                <span class="badge tech-badge">CSS</span>
                                 <span class="badge tech-badge">JavaScript</span>
-                                <span class="badge tech-badge">python</span>
-                                <span class="badge tech-badge">php</span>
-                                <span class="badge tech-badge">discord.py</span>
+                                <span class="badge tech-badge">Python</span>
+                                <span class="badge tech-badge">PHP</span>
+                                <span class="badge tech-badge">Discord.py</span>
                             </div>
                             <div class="d-flex justify-content-between">
                                 <a href="https://blockcode.space" class="btn btn-primary">View Project</a>
-                                <a href="https://github.com/HACKERPLAYZ41/Discord-Userid-api"
-                                    class="btn btn-outline-primary">View Code</a>
+                                <a href="https://github.com/HACKERPLAYZ41/Discord-Userid-api" class="btn btn-outline-primary">View Code</a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- Project 6 -->
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="project-card">
-                    <img src="https://iili.io/KIGtUut.jpg" alt="Discord profile finder">
-                    <div class="card-body">
-                        <h3 class="card-title">E-COMMERCE SHOP WITH PAYMENT GATEWAY(RAZORPAY)</h3>
-                        <p class="card-text">Discord profile viewer with bot API integration and fallback to Discord
-                            public API.</p>
-                        <div class="mb-3">
-                            <span class="badge tech-badge">TYPESCRIPT</span>
-                            <span class="badge tech-badge">Tailwind</span>
-                            <span class="badge tech-badge">MYSQL</span>
-                            <span class="badge tech-badge">php</span>
-                            <span class="badge tech-badge">RAZORPAY(PAYMENT GATEWAY)</span>
+
+                <!-- Project 6 -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="project-card">
+                        <img src="https://iili.io/KIGtUut.jpg" alt="E-commerce Shop">
+                        <div class="card-body">
+                            <h3 class="card-title">E-commerce Shop with Payment Gateway (Razorpay)</h3>
+                            <p class="card-text">Full-featured e-commerce solution with Razorpay payment integration.</p>
+                            <div class="mb-3">
+                                <span class="badge tech-badge">TypeScript</span>
+                                <span class="badge tech-badge">Tailwind</span>
+                                <span class="badge tech-badge">MySQL</span>
+                                <span class="badge tech-badge">PHP</span>
+                                <span class="badge tech-badge">Razorpay</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <a href="https://rovinfx.shop" class="btn btn-primary">View Project</a>
+                            </div>
                         </div>
-                        <div class="d-flex justify-content-between">
-                            <a href="https://rovinfx.shop" class="btn btn-primary">View Project</a>
+                    </div>
+                </div>
+
+                <!-- Project 7 -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="project-card">
+                        <img src="https://iili.io/Klg81Hl.png" alt="Chatbot Widget">
+                        <div class="card-body">
+                            <h3 class="card-title">Chatbot Widget</h3>
+                            <p class="card-text">A chatbot widget for websites with login/register functionality. Get a script to copy and paste into your HTML head tag.</p>
+                            <div class="mb-3">
+                                <span class="badge tech-badge">TypeScript</span>
+                                <span class="badge tech-badge">Tailwind</span>
+                                <span class="badge tech-badge">MySQL</span>
+                                <span class="badge tech-badge">PHP</span>
+                                <span class="badge tech-badge">AI Keys</span>
+                                <span class="badge tech-badge">JavaScript</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <a href="https://chatbot.blockcode.in" class="btn btn-primary">View Project</a>
+                            </div>
+                            <p class="mt-2 small">To check my code or use it, DM me on Discord or create a ticket in the Discord server (Paid only).</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Empty State for when you add more projects -->
-        <div class="text-center py-5" id="more-projects">
-            <h4 class="mb-3">More projects coming soon!</h4>
-            <p>I'm constantly working on new projects and will update this section regularly.</p>
-            <a href="index.html" class="btn btn-primary mt-2">
-                <i class="fas fa-arrow-left me-1"></i> Back to Home
-            </a>
-        </div>
+            <!-- Empty State for when you add more projects -->
+            <div class="text-center py-5" id="more-projects">
+                <h4 class="mb-3">More projects coming soon!</h4>
+                <p>I'm constantly working on new projects and will update this section regularly.</p>
+                <a href="index.html" class="btn btn-primary mt-2">
+                    <i class="fas fa-arrow-left me-1"></i> Back to Home
+                </a>
+            </div>
         </div>
     </section>
 
@@ -381,7 +433,7 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Simple animation for project cards when they come into view
+        // Improved animation for project cards when they come into view
         const projectCards = document.querySelectorAll('.project-card');
 
         const animateCards = () => {
@@ -390,16 +442,16 @@
                 const screenPosition = window.innerHeight / 1.3;
 
                 if (cardPosition < screenPosition) {
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
+                    // Add delay for staggered animation
+                    setTimeout(() => {
+                        card.classList.add('animated');
+                    }, index * 100);
                 }
             });
         };
 
         // Set initial state
         projectCards.forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
             card.style.transition = 'all 0.5s ease';
         });
 
