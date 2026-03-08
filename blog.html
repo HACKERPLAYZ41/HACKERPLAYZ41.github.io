@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Blog — Utkarsh Halwai | blockcode.in</title>
+    <meta name="description"
+        content="Read articles and tutorials by Utkarsh Halwai on web development, infrastructure, and more.">
+
+    <!-- Scripts & Fonts -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+
+    <!-- External Styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/png" href="assets/img/favicons/favicon.png">
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4f633d",
+                        "primary-light": "#708a58",
+                        "secondary": "#abbf97",
+                        "background": "#f3f6ef",
+                        "background-alt": "#e5eadd",
+                        "text-main": "#191f14",
+                        "axolotl": {
+                            '50': '#f3f6ef',
+                            '100': '#e5eadd',
+                            '200': '#ccd8be',
+                            '300': '#abbf97',
+                            '400': '#8da675',
+                            '500': '#708a58',
+                            '600': '#4f633d',
+                            '700': '#445536',
+                            '800': '#39452f',
+                            '900': '#323c2b',
+                            '950': '#191f14',
+                        }
+                    },
+                    fontFamily: { "display": ["Inter", "sans-serif"] }
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-background text-text-main font-display">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="bg-primary p-1.5 rounded-lg text-white">
+                    <svg class="size-6" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z"
+                            fill="currentColor" fill-rule="evenodd"></path>
+                    </svg>
+                </div>
+                <span class="text-xl font-black tracking-tight text-primary">Utkarsh</span>
+            </a>
+            <nav class="hidden md:flex items-center gap-8">
+                <a class="text-sm font-semibold hover:text-primary transition-colors" href="index.html">Home</a>
+                <a class="text-sm font-semibold hover:text-primary transition-colors" href="about.html">About</a>
+                <a class="text-sm font-semibold hover:text-primary transition-colors"
+                    href="index.html#projects">Projects</a>
+                <a class="text-sm font-semibold text-primary nav-active" href="blog.html">Blog</a>
+                <a class="text-sm font-semibold hover:text-primary transition-colors"
+                    href="index.html#services">Services</a>
+                <a class="text-sm font-semibold hover:text-primary transition-colors"
+                    href="index.html#contact">Contact</a>
+            </nav>
+            <div class="flex items-center gap-3">
+                <a href="index.html#contact"
+                    class="hidden sm:inline-flex bg-primary text-background px-5 py-2.5 rounded-lg text-sm font-bold hover:bg-primary-light transition-all">
+                    Say Hello
+                </a>
+                <button id="hamburger" class="hamburger md:hidden" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu" class="mobile-menu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="blog.html" class="nav-active">Blog</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="index.html#contact" class="menu-cta">Say Hello 👋</a>
+    </div>
+
+    <main class="pt-28 pb-24">
+        <div class="max-w-4xl mx-auto px-6">
+
+            <!-- ─── Blog Header ─── -->
+            <div class="mb-14 reveal reveal-up">
+                <span class="section-label mb-2">Writing & Thoughts</span>
+                <h1 class="text-4xl lg:text-5xl font-black tracking-tighter leading-tight text-text-main">
+                    The <span class="text-primary">Blog</span>
+                </h1>
+                <p class="text-text-main/60 mt-4 text-lg max-w-2xl">
+                    Articles, tutorials, and my thoughts on software engineering, hosting infrastructure, and the web.
+                </p>
+            </div>
+
+            <!-- ─── Blog Grid ─── -->
+            <div class="grid md:grid-cols-2 gap-8 mb-20 reveal reveal-up" style="transition-delay: 0.1s;">
+
+                <!-- Sample Article 1 -->
+                <article
+                    class="bg-white rounded-2xl border border-primary/10 overflow-hidden shadow-sm hover:shadow-md transition-all hover:-translate-y-1 flex flex-col">
+                    <div class="h-48 overflow-hidden border-b border-primary/10">
+                        <img src="assets/img/projects/blog_innovation.png"
+                            class="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-500"
+                            alt="Innovation in Tech">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span
+                                class="px-3 py-1 bg-primary/10 rounded-full text-primary font-bold text-[0.65rem] tracking-wider uppercase">Engineering</span>
+                            <span class="text-xs text-text-main/50 font-medium">Coming Soon</span>
+                        </div>
+                        <h2 class="text-xl font-bold mb-3 text-text-main leading-snug">Scaling blockcode.in: Lessons
+                            from our first 500 clients</h2>
+                        <p class="text-sm text-text-main/70 mb-6 line-clamp-3">A deep dive into the infrastructure
+                            choices we made, the mistakes we learned from, and how we maintain 99.9% uptime for
+                            Minecraft servers and Discord bots.</p>
+                        <div class="mt-auto">
+                            <a href="#"
+                                class="inline-flex items-center gap-1.5 text-sm font-bold text-primary hover:text-primary-light transition-colors cursor-not-allowed opacity-50">
+                                Read Article <span class="material-symbols-outlined text-base">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Sample Article 2 -->
+                <article
+                    class="bg-white rounded-2xl border border-primary/10 overflow-hidden shadow-sm hover:shadow-md transition-all hover:-translate-y-1 flex flex-col">
+                    <div class="h-48 overflow-hidden border-b border-primary/10">
+                        <img src="assets/img/projects/blog_infra.png"
+                            class="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-500"
+                            alt="Cloud Infrastructure">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span
+                                class="px-3 py-1 bg-primary/10 rounded-full text-primary font-bold text-[0.65rem] tracking-wider uppercase">Tutorial</span>
+                            <span class="text-xs text-text-main/50 font-medium">Coming Soon</span>
+                        </div>
+                        <h2 class="text-xl font-bold mb-3 text-text-main leading-snug">Building a Discord Bot Dashboard
+                            with React & Node.js</h2>
+                        <p class="text-sm text-text-main/70 mb-6 line-clamp-3">A step-by-step guide to creating a
+                            full-stack dashboard for managing your discord.js bot, complete with OAuth2 login and
+                            real-time settings updates.</p>
+                        <div class="mt-auto">
+                            <a href="#"
+                                class="inline-flex items-center gap-1.5 text-sm font-bold text-primary hover:text-primary-light transition-colors cursor-not-allowed opacity-50">
+                                Read Article <span class="material-symbols-outlined text-base">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Sample Article 3 -->
+                <article
+                    class="bg-white rounded-2xl border border-primary/10 overflow-hidden shadow-sm hover:shadow-md transition-all hover:-translate-y-1 flex flex-col">
+                    <div class="h-48 overflow-hidden border-b border-primary/10">
+                        <img src="assets/img/projects/modern_dashboard.png"
+                            class="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-500"
+                            alt="UI Design">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span
+                                class="px-4 py-1.5 bg-primary/10 rounded-full text-primary font-bold text-[0.65rem] tracking-wider uppercase">UI
+                                / Design</span>
+                            <span class="text-xs text-text-main/50 font-medium">Coming Soon</span>
+                        </div>
+                        <h2 class="text-xl font-bold mb-3 text-text-main leading-snug">Premium UI Design Principles
+                            for Web Applications</h2>
+                        <p class="text-sm text-text-main/70 mb-6 line-clamp-3">Exploring best practices for clean,
+                            modern interfaces that wow users while maintaining accessibility and speed.</p>
+                        <div class="mt-auto">
+                            <a href="#"
+                                class="inline-flex items-center gap-1.5 text-sm font-bold text-primary hover:text-primary-light transition-colors cursor-not-allowed opacity-50">
+                                Read Article <span class="material-symbols-outlined text-base">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- ─── Newsletter CTA ─── -->
+            <div class="bg-primary text-background rounded-3xl p-8 md:p-12 text-center reveal reveal-up"
+                style="transition-delay: 0.2s;">
+                <h3 class="text-2xl md:text-3xl font-bold mb-4">Stay in the loop</h3>
+                <p class="opacity-80 max-w-xl mx-auto mb-8">I rarely publish, but when I do, it's packed with value. No
+                    spam, just engineering.</p>
+                <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
+                    onsubmit="event.preventDefault(); alert('Newsletter coming soon!');">
+                    <input type="email" placeholder="Your email address" required
+                        class="flex-grow px-5 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-white focus:ring-1 focus:ring-white">
+                    <button type="submit"
+                        class="px-6 py-3 bg-white text-primary font-bold rounded-xl hover:bg-background-alt transition-colors">Subscribe</button>
+                </form>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-primary text-background pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <!-- Brand Info -->
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="bg-background p-1.5 rounded-lg text-primary">
+                            <svg class="size-6" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                <path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z"
+                                    fill="currentColor" fill-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <span class="text-2xl font-black">Utkarsh</span>
+                    </div>
+                    <p class="text-sm opacity-60 leading-relaxed max-w-xs">
+                        Designing and engineering digital experiences that define the future. Let's build something
+                        exceptional together.
+                    </p>
+                </div>
+
+                <!-- Navigation -->
+                <div>
+                    <h4 class="text-sm font-black uppercase tracking-widest mb-6 opacity-40">Navigation</h4>
+                    <ul class="space-y-4">
+                        <li><a href="index.html"
+                                class="text-sm font-semibold hover:text-secondary-light transition-colors">Home</a></li>
+                        <li><a href="about.html"
+                                class="text-sm font-semibold hover:text-secondary-light transition-colors">About</a>
+                        </li>
+                        <li><a href="index.html#projects"
+                                class="text-sm font-semibold hover:text-secondary-light transition-colors">Projects</a>
+                        </li>
+                        <li><a href="blog.html"
+                                class="text-sm font-semibold hover:text-secondary-light transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services & Support -->
+                <div>
+                    <h4 class="text-sm font-black uppercase tracking-widest mb-6 opacity-40">Services</h4>
+                    <ul class="space-y-4">
+                        <li><a href="index.html#services"
+                                class="text-sm font-semibold hover:text-secondary-light transition-colors">Web Dev</a>
+                        </li>
+                        <li><a href="index.html#services"
+                                class="text-sm font-semibold hover:text-secondary-light transition-colors">Bot
+                                Infrastructure</a></li>
+                        <li><a href="terms-of-service.html"
+                                class="text-sm font-semibold hover:text-secondary-light transition-colors">Terms of
+                                Service</a></li>
+                        <li><a href="privacy-policy.html"
+                                class="text-sm font-semibold hover:text-secondary-light transition-colors">Privacy
+                                Policy</a></li>
+                    </ul>
+                </div>
+
+                <!-- Connect -->
+                <div>
+                    <h4 class="text-sm font-black uppercase tracking-widest mb-6 opacity-40">Connect</h4>
+                    <div class="flex gap-4 mb-6">
+                        <a href="https://github.com/hackerplayz41" target="_blank"
+                            class="size-10 rounded-full border border-background/20 flex items-center justify-center hover:bg-background hover:text-primary transition-all">
+                            <svg class="size-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                            </svg>
+                        </a>
+                        <a href="https://discord.com/invite/DugRxFGKGD" target="_blank"
+                            class="size-10 rounded-full border border-background/20 flex items-center justify-center hover:bg-background hover:text-primary transition-all">
+                            <svg class="size-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z" />
+                            </svg>
+                        </a>
+                    </div>
+                    <a href="mailto:hello@blockcode.in"
+                        class="inline-flex items-center gap-2 text-sm font-bold opacity-60 hover:opacity-100 transition-opacity underline-offset-4 hover:underline">
+                        <span class="material-symbols-outlined text-base">mail</span>
+                        hello@blockcode.in
+                    </a>
+                </div>
+            </div>
+
+            <div
+                class="flex flex-col md:flex-row justify-between items-center gap-6 pt-8 border-t border-background/10 opacity-55 text-xs">
+                <p>© 2026 Utkarsh Halwai. All rights reserved by Utkarsh Halwai.</p>
+                <div class="flex gap-8">
+                    <a class="hover:underline" href="privacy-policy.html">Privacy Policy</a>
+                    <a class="hover:underline" href="terms-of-service.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

@@ -2,461 +2,1104 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Projects - HackerPlayz41</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>All Projects — Utkarsh Halwai | blockcode.in</title>
+    <meta name="description"
+        content="Browse all 14 projects by Utkarsh Halwai — full-stack apps, Discord tools, hosting infrastructure, e-commerce, and more.">
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/png" href="assets/img/favicons/favicon.png">
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4f633d",
+                        "primary-light": "#708a58",
+                        "secondary": "#abbf97",
+                        "background": "#f3f6ef",
+                        "background-alt": "#e5eadd",
+                        "text-main": "#191f14",
+                        "axolotl": {
+                            '50': '#f3f6ef',
+                            '100': '#e5eadd',
+                            '200': '#ccd8be',
+                            '300': '#abbf97',
+                            '400': '#8da675',
+                            '500': '#708a58',
+                            '600': '#4f633d',
+                            '700': '#445536',
+                            '800': '#39452f',
+                            '900': '#323c2b',
+                            '950': '#191f14',
+                        }
+                    },
+                    fontFamily: { "display": ["Inter", "sans-serif"] }
+                },
+            },
+        }
+    </script>
+
     <style>
+        /* ── Page-specific styles ── */
         :root {
-            --primary-color: #6a0dad;
-            --secondary-color: #9b59b6;
-            --light-color: #f5e6ff;
-            --dark-color: #4b0082;
+            --primary: #4F633D;
+            --primary-light: #6b864f;
+            --secondary: #9BA194;
+            --bg: #FFF7E2;
+            --bg-alt: #f9f0d4;
+            --text: #14210a;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f9f3ff;
-            color: #333;
-            line-height: 1.6;
+        /* Filter bar */
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
         }
 
-        .navbar {
-            background-color: var(--primary-color);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .navbar-brand,
-        .nav-link {
-            color: white !important;
-        }
-
-        .nav-link:hover {
-            color: var(--light-color) !important;
-        }
-
-        .project-header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 5rem 0;
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .project-card {
-            border: none;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            margin-bottom: 2rem;
-            background-color: white;
-            height: 100%;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        .project-card.animated {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px) !important;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .project-card img {
-            height: 200px;
-            object-fit: cover;
-            width: 100%;
-        }
-
-        .project-card .card-body {
-            padding: 1.5rem;
-        }
-
-        .project-card .card-title {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
+        .filter-btn {
+            padding: 0.45rem 1.1rem;
+            border-radius: 9999px;
+            font-size: 0.8rem;
             font-weight: 600;
+            border: 1.5px solid rgba(79, 99, 61, 0.2);
+            background: transparent;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.25s ease;
+            white-space: nowrap;
         }
 
-        .tech-badge {
-            background-color: var(--light-color);
-            color: var(--dark-color);
-            font-weight: 500;
-            margin-right: 0.5rem;
-            margin-bottom: 0.5rem;
+        .filter-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .filter-btn.active {
+            background: var(--primary);
+            color: #FFF7E2;
+            border-color: var(--primary);
+        }
+
+        /* Projects grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 1023px) {
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 639px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Project card */
+        .proj-card {
+            background: #ffffff;
+            border: 1px solid rgba(79, 99, 61, 0.12);
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1),
+                box-shadow 0.35s cubic-bezier(0.23, 1, 0.32, 1),
+                border-color 0.3s ease;
+        }
+
+        .proj-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(79, 99, 61, 0.12), 0 0 0 1.5px rgba(79, 99, 61, 0.25);
+            border-color: rgba(79, 99, 61, 0.3);
+        }
+
+        /* Card hidden state for filtering */
+        .proj-card.hidden {
+            display: none;
+        }
+
+        /* ── Card media area ── */
+        .proj-card__media {
+            position: relative;
+            height: 180px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .proj-card__media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .proj-card:hover .proj-card__media img {
+            transform: scale(1.07);
+        }
+
+        /* Gradient placeholder for cards without images */
+        .proj-card__media--gradient {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .proj-card__media--gradient .media-icon {
+            font-size: 3rem;
+            color: rgba(255, 247, 226, 0.45);
+            transition: transform 0.35s ease;
+        }
+
+        .proj-card:hover .proj-card__media--gradient .media-icon {
+            transform: scale(1.15);
+        }
+
+        /* Dark scrim on media */
+        .proj-card__media-scrim {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(20, 33, 10, 0.6) 0%, transparent 60%);
+        }
+
+        /* Badges overlay on media */
+        .proj-card__badges {
+            position: absolute;
+            top: 0.75rem;
+            left: 0.75rem;
+            right: 0.75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .proj-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
-            font-size: 0.75rem;
+            padding: 0.22rem 0.6rem;
+            border-radius: 9999px;
+            backdrop-filter: blur(8px);
         }
 
-        .btn-primary {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-            font-weight: 500;
+        .proj-badge--live {
+            background: rgba(34, 197, 94, 0.2);
+            border: 1px solid rgba(34, 197, 94, 0.4);
+            color: #86efac;
         }
 
-        .btn-primary:hover {
-            background-color: var(--dark-color);
-            border-color: var(--dark-color);
+        .proj-badge--live .live-dot {
+            width: 6px;
+            height: 6px;
+            background: #22c55e;
+            border-radius: 50%;
+            animation: livePulse 1.5s ease-in-out infinite;
         }
 
-        .btn-outline-primary {
-            color: var(--primary-color);
-            border-color: var(--primary-color);
+        @keyframes livePulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6);
+            }
+
+            50% {
+                opacity: 0.7;
+                box-shadow: 0 0 0 4px rgba(34, 197, 94, 0);
+            }
         }
 
-        .btn-outline-primary:hover {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
+        .proj-badge--private {
+            background: rgba(155, 161, 148, 0.2);
+            border: 1px solid rgba(155, 161, 148, 0.3);
+            color: #d1d5c8;
         }
 
-        .footer {
-            background-color: var(--dark-color);
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-            margin-top: 3rem;
+        .proj-badge--public {
+            background: rgba(79, 99, 61, 0.2);
+            border: 1px solid rgba(79, 99, 61, 0.4);
+            color: #b4cc98;
         }
 
-        .made-by-btn {
-            background-color: transparent;
-            border: 2px solid white;
-            color: white;
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            transition: all 0.3s ease;
+        .proj-badge--featured {
+            background: rgba(250, 204, 21, 0.18);
+            border: 1px solid rgba(250, 204, 21, 0.3);
+            color: #fde68a;
+        }
+
+        /* ── Card body ── */
+        .proj-card__body {
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            gap: 0.6rem;
+        }
+
+        /* Category chip */
+        .cat-chip {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--primary-light);
+            background: rgba(79, 99, 61, 0.08);
+            border: 1px solid rgba(79, 99, 61, 0.15);
+            padding: 0.2rem 0.6rem;
+            border-radius: 9999px;
+            display: inline-block;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            width: fit-content;
+        }
+
+        /* Title */
+        .proj-card__title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1.3;
+            letter-spacing: -0.01em;
+        }
+
+        /* Description */
+        .proj-card__desc {
+            font-size: 0.8rem;
+            line-height: 1.55;
+            color: rgba(20, 33, 10, 0.6);
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            overflow: hidden;
+            flex: 1;
+        }
+
+        /* Tech tags */
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+            margin-top: 0.1rem;
+        }
+
+        .tech-tag {
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: rgba(20, 33, 10, 0.55);
+            background: var(--bg-alt);
+            border: 1px solid rgba(79, 99, 61, 0.12);
+            padding: 0.15rem 0.5rem;
+            border-radius: 5px;
+        }
+
+        /* Actions */
+        .proj-card__actions {
+            display: flex;
+            gap: 0.6rem;
+            margin-top: 0.3rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-view {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--primary);
+            background: rgba(79, 99, 61, 0.08);
+            border: 1.5px solid rgba(79, 99, 61, 0.2);
+            padding: 0.4rem 0.85rem;
+            border-radius: 8px;
             text-decoration: none;
-            display: inline-block;
-            margin-top: 1rem;
+            transition: background 0.2s, border-color 0.2s, color 0.2s;
         }
 
-        .made-by-btn:hover {
-            background-color: white;
-            color: var(--dark-color);
+        .btn-view:hover {
+            background: var(--primary);
+            color: #FFF7E2;
+            border-color: var(--primary);
         }
 
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            margin: 0 10px;
-            transition: all 0.3s ease;
+        .btn-live {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: #16a34a;
+            background: rgba(34, 197, 94, 0.07);
+            border: 1.5px solid rgba(34, 197, 94, 0.25);
+            padding: 0.4rem 0.85rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background 0.2s, border-color 0.2s;
         }
 
-        .social-links a:hover {
-            color: var(--light-color);
-            transform: translateY(-3px);
+        .btn-live:hover {
+            background: rgba(34, 197, 94, 0.15);
+            border-color: rgba(34, 197, 94, 0.5);
         }
 
-        .back-to-home {
-            display: inline-block;
-            margin-bottom: 2rem;
-            color: var(--primary-color);
-            font-weight: 500;
+        /* Stats pill */
+        .stat-pill {
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: rgba(20, 33, 10, 0.5);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
         }
 
-        .back-to-home:hover {
-            color: var(--dark-color);
+        /* Counter section */
+        .count-ring {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.2rem;
         }
 
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .project-header {
-                padding: 3rem 0;
-            }
-
-            .project-card img {
-                height: 150px;
-            }
-            
-            .project-card .card-body {
-                padding: 1rem;
-            }
-            
-            .btn {
-                font-size: 0.9rem;
-                padding: 0.5rem 1rem;
-            }
+        .count-ring__number {
+            font-size: 2rem;
+            font-weight: 900;
+            line-height: 1;
+            color: var(--primary);
         }
-        
-        @media (max-width: 576px) {
-            .project-header h1 {
-                font-size: 2rem;
-            }
-            
-            .project-header p {
-                font-size: 1rem;
-            }
-            
-            .d-flex.justify-content-between {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-            
-            .d-flex.justify-content-between .btn {
-                width: 100%;
-                text-align: center;
-            }
+
+        .count-ring__label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            color: rgba(20, 33, 10, 0.45);
+        }
+
+        /* Empty state */
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 4rem 2rem;
+            color: rgba(20, 33, 10, 0.4);
+        }
+
+        /* Filter transition helpers */
+        .proj-card.fade-out {
+            opacity: 0;
+            transform: scale(0.96);
+            pointer-events: none;
         }
     </style>
 </head>
 
-<body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">HackerPlayz41</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html#about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html#skills">Skills</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="projects.html">Projects</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<body class="bg-background text-text-main font-display">
 
-    <!-- Projects Header -->
-    <section class="project-header">
-        <div class="container">
-            <h1 class="display-4 fw-bold mb-3">My Projects</h1>
-            <p class="lead">Collection of my work and coding projects</p>
-        </div>
-    </section>
-
-    <!-- Projects Grid -->
-    <section class="py-3">
-        <div class="container">
-            <a href="index.html" class="back-to-home">
-                <i class="fas fa-arrow-left me-2"></i>Back to Home
+    <!-- ── Navigation ── -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="bg-primary p-1.5 rounded-lg text-white">
+                    <svg class="size-6" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z"
+                            fill="currentColor" fill-rule="evenodd"></path>
+                    </svg>
+                </div>
+                <span class="text-xl font-black tracking-tight text-primary">Utkarsh</span>
             </a>
-
-            <div class="row">
-                <!-- Project 1 -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="project-card">
-                        <img src="https://iili.io/FQJ2PFn.png" alt="Birthday Gift Website">
-                        <div class="card-body">
-                            <h3 class="card-title">Birthday Gift</h3>
-                            <p class="card-text">A small gift website that was open source. I just edited some things.</p>
-                            <div class="mb-3">
-                                <span class="badge tech-badge">HTML</span>
-                                <span class="badge tech-badge">CSS</span>
-                                <span class="badge tech-badge">JavaScript</span>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <a href="https://hackerplayz41.github.io/lala.html" class="btn btn-primary">View Project</a>
-                                <a href="https://github.com/HACKERPLAYZ41/HACKERPLAYZ41.github.io/blob/main/lala.html" class="btn btn-outline-primary">View Code</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="project-card">
-                        <img src="https://iili.io/FQX1BaV.png" alt="Solar System Simulation">
-                        <div class="card-body">
-                            <h3 class="card-title">Solar System Simulation</h3>
-                            <p class="card-text">Solar system simulation of some planets with interactive elements.</p>
-                            <div class="mb-3">
-                                <span class="badge tech-badge">HTML</span>
-                                <span class="badge tech-badge">CSS</span>
-                                <span class="badge tech-badge">JavaScript</span>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <a href="https://HACKERPLAYZ41.github.io/earth.html" class="btn btn-primary">View Project</a>
-                                <a href="https://github.com/HACKERPLAYZ41/HACKERPLAYZ41.github.io/blob/main/earth.html" class="btn btn-outline-primary">View Code</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="project-card">
-                        <img src="https://iili.io/FQXIjaa.png" alt="Promotion Website">
-                        <div class="card-body">
-                            <h3 class="card-title">Promotion Website</h3>
-                            <p class="card-text">Custom API with authentication, rate limiting, and documentation with proper SEO, Mailgun for SMTP, and Discord webhook for alerts.</p>
-                            <div class="mb-3">
-                                <span class="badge tech-badge">React.js</span>
-                                <span class="badge tech-badge">PHP</span>
-                                <span class="badge tech-badge">JWT</span>
-                                <span class="badge tech-badge">Firebase</span>
-                                <span class="badge tech-badge">MySQL</span>
-                                <span class="badge tech-badge">HTML</span>
-                                <span class="badge tech-badge">CSS</span>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <a href="https://vsmehandi.art" class="btn btn-primary">View Project</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 4 -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="project-card">
-                        <img src="https://iili.io/FQ2gkes.png" alt="Portfolio Website">
-                        <div class="card-body">
-                            <h3 class="card-title">Portfolio Website</h3>
-                            <p class="card-text">Responsive portfolio with smooth animations.</p>
-                            <div class="mb-3">
-                                <span class="badge tech-badge">HTML5</span>
-                                <span class="badge tech-badge">CSS3</span>
-                                <span class="badge tech-badge">JavaScript</span>
-                                <span class="badge tech-badge">Bootstrap</span>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <a href="https://hackerplayz41.github.io" class="btn btn-primary">View Project</a>
-                                <a href="https://github.com/HACKERPLAYZ41/HACKERPLAYZ41.github.io/blob/main/index.html" class="btn btn-outline-primary">View Code</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 5 -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="project-card">
-                        <img src="https://iili.io/FQWWjRV.png" alt="Discord Profile Finder">
-                        <div class="card-body">
-                            <h3 class="card-title">Real-time Discord Profile Finder</h3>
-                            <p class="card-text">Discord profile viewer with bot API integration and fallback to Discord public API.</p>
-                            <div class="mb-3">
-                                <span class="badge tech-badge">HTML</span>
-                                <span class="badge tech-badge">CSS</span>
-                                <span class="badge tech-badge">JavaScript</span>
-                                <span class="badge tech-badge">Python</span>
-                                <span class="badge tech-badge">PHP</span>
-                                <span class="badge tech-badge">Discord.py</span>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <a href="https://blockcode.space" class="btn btn-primary">View Project</a>
-                                <a href="https://github.com/HACKERPLAYZ41/Discord-Userid-api" class="btn btn-outline-primary">View Code</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 6 -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="project-card">
-                        <img src="https://iili.io/KIGtUut.jpg" alt="E-commerce Shop">
-                        <div class="card-body">
-                            <h3 class="card-title">E-commerce Shop with Payment Gateway (Razorpay)</h3>
-                            <p class="card-text">Full-featured e-commerce solution with Razorpay payment integration.</p>
-                            <div class="mb-3">
-                                <span class="badge tech-badge">TypeScript</span>
-                                <span class="badge tech-badge">Tailwind</span>
-                                <span class="badge tech-badge">MySQL</span>
-                                <span class="badge tech-badge">PHP</span>
-                                <span class="badge tech-badge">Razorpay</span>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <a href="https://rovinfx.shop" class="btn btn-primary">View Project</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 7 -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="project-card">
-                        <img src="https://iili.io/Klg81Hl.png" alt="Chatbot Widget">
-                        <div class="card-body">
-                            <h3 class="card-title">Chatbot Widget</h3>
-                            <p class="card-text">A chatbot widget for websites with login/register functionality. Get a script to copy and paste into your HTML head tag.</p>
-                            <div class="mb-3">
-                                <span class="badge tech-badge">TypeScript</span>
-                                <span class="badge tech-badge">Tailwind</span>
-                                <span class="badge tech-badge">MySQL</span>
-                                <span class="badge tech-badge">PHP</span>
-                                <span class="badge tech-badge">AI Keys</span>
-                                <span class="badge tech-badge">JavaScript</span>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <a href="https://chatbot.blockcode.in" class="btn btn-primary">View Project</a>
-                            </div>
-                            <p class="mt-2 small">To check my code or use it, DM me on Discord or create a ticket in the Discord server (Paid only).</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Empty State for when you add more projects -->
-            <div class="text-center py-5" id="more-projects">
-                <h4 class="mb-3">More projects coming soon!</h4>
-                <p>I'm constantly working on new projects and will update this section regularly.</p>
-                <a href="index.html" class="btn btn-primary mt-2">
-                    <i class="fas fa-arrow-left me-1"></i> Back to Home
+            <nav class="hidden md:flex items-center gap-8">
+                <a class="text-sm font-semibold hover:text-primary transition-colors" href="index.html">Home</a>
+                <a class="text-sm font-semibold hover:text-primary transition-colors" href="about.html">About</a>
+                <a class="text-sm font-semibold text-primary border-b-2 border-primary pb-0.5"
+                    href="projects.html">Projects</a>
+                <a class="text-sm font-semibold hover:text-primary transition-colors" href="blog.html">Blog</a>
+                <a class="text-sm font-semibold hover:text-primary transition-colors"
+                    href="index.html#services">Services</a>
+                <a class="text-sm font-semibold hover:text-primary transition-colors"
+                    href="index.html#contact">Contact</a>
+            </nav>
+            <div class="flex items-center gap-3">
+                <a href="index.html#contact"
+                    class="hidden sm:inline-flex bg-primary text-background px-5 py-2.5 rounded-lg text-sm font-bold hover:bg-primary-light transition-all">
+                    Say Hello
                 </a>
+                <button id="hamburger" class="hamburger md:hidden" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
         </div>
-    </section>
+    </header>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="social-links mb-4">
-                <a href="https://github.com/hackerplayz41" target="_blank" title="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://www.instagram.com/blockcode.in" target="_blank" title="Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://discord.gg/DugRxFGKGD" target="_blank" title="Discord">
-                    <i class="fab fa-discord"></i>
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu" class="mobile-menu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html" class="nav-active">Projects</a>
+        <a href="blog.html">Blog</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="index.html#contact" class="menu-cta">Say Hello 👋</a>
+    </div>
+
+    <main class="pt-28 pb-24">
+
+        <!-- ── Page Hero ── -->
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-4 reveal reveal-up">
+                <a href="index.html"
+                    class="inline-flex items-center gap-1.5 text-sm text-text-main/50 hover:text-primary transition-colors font-medium">
+                    <span class="material-symbols-outlined text-base">arrow_back</span>
+                    Back to Portfolio
                 </a>
             </div>
-            <p class="mb-2">&copy; 2025 HackerPlayz41. All rights reserved.</p>
-            <a href="https://blockcode.in" class="made-by-btn" target="_blank">
-                Made by blockcode.in
-            </a>
+
+            <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-12 reveal reveal-up"
+                style="transition-delay:0.05s;">
+                <div>
+                    <span class="section-label mb-3">
+                        <span class="material-symbols-outlined text-sm">grid_view</span>
+                        Complete Archive
+                    </span>
+                    <h1 class="text-4xl lg:text-5xl font-black tracking-tighter text-text-main leading-tight">
+                        All <span class="text-primary">Projects</span>
+                    </h1>
+                    <p class="text-text-main/55 mt-2 max-w-xl leading-relaxed">
+                        14 projects spanning hosting infrastructure, e-commerce, AI tools, and creative experiments.
+                    </p>
+                </div>
+
+                <!-- Stat counters -->
+                <div
+                    class="flex items-center gap-8 flex-shrink-0 bg-white/80 border border-primary/10 rounded-2xl px-6 py-4">
+                    <div class="count-ring">
+                        <span class="count-ring__number">14</span>
+                        <span class="count-ring__label">Total</span>
+                    </div>
+                    <div class="w-px h-10 bg-primary/10"></div>
+                    <div class="count-ring">
+                        <span class="count-ring__number" style="color:#16a34a;">4</span>
+                        <span class="count-ring__label">Live</span>
+                    </div>
+                    <div class="w-px h-10 bg-primary/10"></div>
+                    <div class="count-ring">
+                        <span class="count-ring__number" style="color:#4F633D;">8</span>
+                        <span class="count-ring__label">Public</span>
+                    </div>
+                    <div class="w-px h-10 bg-primary/10"></div>
+                    <div class="count-ring">
+                        <span class="count-ring__number" style="color:#9BA194;">6</span>
+                        <span class="count-ring__label">Private</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── Filter Bar ── -->
+            <div class="filter-bar mb-10 reveal reveal-up" id="filter-bar" style="transition-delay:0.1s;">
+                <button class="filter-btn active" data-filter="all">All (14)</button>
+                <button class="filter-btn" data-filter="live">🟢 Live</button>
+                <button class="filter-btn" data-filter="hosting">🏠 Hosting</button>
+                <button class="filter-btn" data-filter="ecommerce">🛒 E-commerce</button>
+                <button class="filter-btn" data-filter="tools">🤖 AI & Tools</button>
+                <button class="filter-btn" data-filter="creative">🎨 Creative</button>
+                <button class="filter-btn" data-filter="client">👤 Client Work</button>
+            </div>
+
+            <!-- ── Projects Grid ── -->
+            <div class="projects-grid" id="projects-grid">
+
+                <!-- ════ 1. BLOCKCODE.IN ════ -->
+                <div class="proj-card reveal reveal-up" data-category="hosting live">
+                    <div class="proj-card__media">
+                        <img src="https://blockcode.in/assets/BlockCode-Website-Hero-Image-Promptpng.png"
+                            alt="Blockcode.in" loading="lazy">
+                        <div class="proj-card__media-scrim"></div>
+                        <div class="proj-card__badges">
+                            <span class="proj-badge proj-badge--live">
+                                <span class="live-dot"></span> Live
+                            </span>
+                            <span class="proj-badge proj-badge--featured">⭐ Featured</span>
+                        </div>
+                    </div>
+                    <div class="proj-card__body">
+                        <span class="cat-chip">🏠 Hosting</span>
+                        <h3 class="proj-card__title">Blockcode.in</h3>
+                        <p class="proj-card__desc">Flagship hosting platform for Discord bots & Minecraft servers —
+                            serving 500+ clients with 99.9% uptime SLA.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">DDoS Mitigation</span>
+                        </div>
+                        <div class="proj-card__actions">
+                            <a href="projects/blockcode.html" class="btn-view">View Project <span
+                                    class="material-symbols-outlined"
+                                    style="font-size:0.85rem;">arrow_forward</span></a>
+                            <a href="https://blockcode.in" target="_blank" class="btn-live">↗ blockcode.in</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ════ 2. PANEL ════ -->
+                <div class="proj-card reveal reveal-up" data-category="hosting" style="transition-delay:0.05s;">
+                    <div class="proj-card__media proj-card__media--gradient"
+                        style="background: linear-gradient(135deg, #0a1507 0%, #1a3210 50%, #2d4a1a 100%);">
+                        <span class="material-symbols-outlined media-icon">dashboard</span>
+                        <div class="proj-card__media-scrim"></div>
+                        <div class="proj-card__badges">
+                            <span class="proj-badge proj-badge--private">🔒 Private</span>
+                        </div>
+                    </div>
+                    <div class="proj-card__body">
+                        <span class="cat-chip">🏠 Infrastructure</span>
+                        <h3 class="proj-card__title">Panel — Hosting Manager</h3>
+                        <p class="proj-card__desc">Custom-built hosting control panel for managing Blockcode's server
+                            fleet, client accounts, and resource allocation.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">REST API</span>
+                        </div>
+                        <div class="proj-card__actions">
+                            <span class="stat-pill">
+                                <span class="material-symbols-outlined" style="font-size:0.9rem;">lock</span>
+                                Private repository
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ════ 3. VS MEHANDI ART ════ -->
+                <div class="proj-card reveal reveal-up" data-category="live client" style="transition-delay:0.1s;">
+                    <div class="proj-card__media proj-card__media--gradient"
+                        style="background: linear-gradient(135deg, #1a0a12 0%, #3d1a2e 50%, #6b2d4a 100%);">
+                        <span class="material-symbols-outlined media-icon">brush</span>
+                        <div class="proj-card__media-scrim"></div>
+                        <div class="proj-card__badges">
+                            <span class="proj-badge proj-badge--live"><span class="live-dot"></span> Live</span>
+                        </div>
+                    </div>
+                    <div class="proj-card__body">
+                        <span class="cat-chip">👤 Client Work</span>
+                        <h3 class="proj-card__title">VS Mehandi Art</h3>
+                        <p class="proj-card__desc">Live production website for a real client — a mehndi art portfolio
+                            with e-commerce and booking functionality.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">HTML/CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                        <div class="proj-card__actions">
+                            <a href="https://vsmehandi.art" target="_blank" class="btn-live">↗ vsmehandi.art</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ════ 4. E-COMMERCE STORE ════ -->
+                <div class="proj-card reveal reveal-up" data-category="ecommerce live" style="transition-delay:0.15s;">
+                    <div class="proj-card__media">
+                        <img src="https://iili.io/KIGtUut.jpg" alt="E-commerce Store" loading="lazy">
+                        <div class="proj-card__media-scrim"></div>
+                        <div class="proj-card__badges">
+                            <span class="proj-badge proj-badge--public">⬡ Public</span>
+                        </div>
+                    </div>
+                    <div class="proj-card__body">
+                        <span class="cat-chip">🛒 E-commerce</span>
+                        <h3 class="proj-card__title">E-commerce Store</h3>
+                        <p class="proj-card__desc">Full-stack Next.js store with ZIP-based delivery logic and Razorpay
+                            payment integration — production-grade.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Razorpay</span>
+                            <span class="tech-tag">MySQL</span>
+                        </div>
+                        <div class="proj-card__actions">
+                            <a href="projects/ecommerce.html" class="btn-view">View Project <span
+                                    class="material-symbols-outlined"
+                                    style="font-size:0.85rem;">arrow_forward</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ════ 5. CHATBOT WIDGET ════ -->
+                <div class="proj-card reveal reveal-up" data-category="tools" style="transition-delay:0.2s;">
+                    <div class="proj-card__media">
+                        <img src="https://iili.io/Klg81Hl.png" alt="Chatbot Widget" loading="lazy">
+                        <div class="proj-card__media-scrim"></div>
+                        <div class="proj-card__badges">
+                            <span class="proj-badge proj-badge--public">⬡ Public</span>
+                        </div>
+                    </div>
+                    <div class="proj-card__body">
+                        <span class="cat-chip">🤖 AI Tool</span>
+                        <h3 class="proj-card__title">Chatbot Widget</h3>
+                        <p class="proj-card__desc">Embeddable AI chatbot powered by OpenAI — drop a single script tag to
+                            add smart chat to any website.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">OpenAI API</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">JWT Auth</span>
+                        </div>
+                        <div class="proj-card__actions">
+                            <a href="projects/chatbot.html" class="btn-view">View Project <span
+                                    class="material-symbols-outlined"
+                                    style="font-size:0.85rem;">arrow_forward</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ════ 6. DISCORD PROFILE FINDER ════ -->
+                <div class="proj-card reveal reveal-up" data-category="tools live" style="transition-delay:0.25s;">
+                    <div class="proj-card__media">
+                        <img src="https://iili.io/FQWWjRV.png" alt="Discord Profile Finder" loading="lazy">
+                        <div class="proj-card__media-scrim"></div>
+                        <div class="proj-card__badges">
+                            <span class="proj-badge proj-badge--public">⬡ Public</span>
+                            <span class="proj-badge"
+                                style="background:rgba(88,101,242,0.2);border:1px solid rgba(88,101,242,0.4);color:#c3c6ff;">★
+                                1 star</span>
+                        </div>
+                    </div>
+                    <div class="proj-card__body">
+                        <span class="cat-chip">🤖 Developer Tool</span>
+                        <h3 class="proj-card__title">Discord Profile Finder</h3>
+                        <p class="proj-card__desc">Real-time Discord profile viewer using multi-API integration — lookup
+                            any user by ID instantly.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Discord API</span>
+                            <span class="tech-tag">REST APIs</span>
+                        </div>
+                        <div class="proj-card__actions">
+                            <a href="projects/discord-finder.html" class="btn-view">View Project <span
+                                    class="material-symbols-outlined"
+                                    style="font-size:0.85rem;">arrow_forward</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ════ 7. BLOCKCODE MARKETPLACE SHOP ════ -->
+                <div class="proj-card reveal reveal-up" data-category="ecommerce hosting"
+                    style="transition-delay:0.05s;">
+                    <div class="proj-card__media proj-card__media--gradient"
+                        style="background: linear-gradient(135deg, #0d1a09 0%, #2d4a1a 60%, #4F633D 100%);">
+                        <span class="material-symbols-outlined media-icon">storefront</span>
+                        <div class="proj-card__media-scrim"></div>
+                        <div class="proj-card__badges">
+                            <span class="proj-badge proj-badge--private">🔒 Private</span>
+                        </div>
+                    </div>
+                    <div class="proj-card__body">
+                        <span class="cat-chip">🛒 Marketplace</span>
+                        <h3 class="proj-card__title">Blockcode Marketplace</h3>
+                        <p class="proj-card__desc">TypeScript marketplace platform — part of the Blockcode ecosystem for
+                            buying and selling digital hosting products.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">REST API</span>
+                            <span class="tech-tag">Auth</span>
+                        </div>
+                        <div class="proj-card__actions">
+                            <span class="stat-pill">
+                                <span class="material-symbols-outlined" style="font-size:0.9rem;">lock</span>
+                                Private repository
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ════ 8. CHAPPAL HERITAGE HUB V2 ════ -->
+                <div class="proj-card reveal reveal-up" data-category="ecommerce" style="transition-delay:0.1s;">
+                    <div class="proj-card__media">
+                        <img src="https://kolhapuri.blockcode.in/mens-kolhapuri-chappals-leather-sandals.jpg"
+                            alt="Chappal Heritage Hub V2" loading="lazy">
+                        <div class="proj-card__media-scrim"></div>
+                        <div class="proj-card__badges">
+                            <span class="proj-badge proj-badge--private">🔒 Private</span>
+                            <span class="proj-badge"
+                                style="background:rgba(79,99,61,0.25);border:1px solid rgba(79,99,61,0.4);color:#b4cc98;">v2.0</span>
+                        </div>
+                    </div>
+                    <div class="proj-card__body">
+                        <span class="cat-chip">🛒 E-commerce</span>
+                        <h3 class="proj-card__title">Chappal Heritage Hub V2</h3>
+                        <p class="proj-card__desc">Complete TypeScript rewrite of the Kolhapuri Chappal store — full
+                            product catalog, cart, and checkout flow.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">E-commerce</span>
+                        </div>
+                        <div class="proj-card__actions">
+                            <span class="stat-pill">
+                                <span class="material-symbols-outlined" style="font-size:0.9rem;">lock</span>
+                                Private repository
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ════ 9. BLAST BROADCAST HUB ════ -->
+                <div class="proj-card reveal reveal-up" data-category="tools" style="transition-delay:0.15s;">
+                    <div class="proj-card__media proj-card__media--gradient"
+                        style="background: linear-gradient(135deg, #07090d 0%, #111827 50%, #1e3a5f 100%);">
+                        <span class="material-symbols-outlined media-icon">campaign</span>
+                        <div class="proj-card__media-scrim"></div>
+                        <div class="proj-card__badges">
+                            <span class="proj-badge proj-badge--private">🔒 Private</span>
+                        </div>
+                    </div>
+                    <div class="proj-card__body">
+                        <span class="cat-chip">🤖 Broadcasting</span>
+                        <h3 class="proj-card__title">Blast Broadcast Hub</h3>
+                        <p class="proj-card__desc">TypeScript broadcasting system — send targeted messages and
+                            announcements across multiple channels and platforms.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">WebSockets</span>
+                            <span class="tech-tag">APIs</span>
+                        </div>
+                        <div class="proj-card__actions">
+                            <span class="stat-pill">
+                                <span class="material-symbols-outlined" style="font-size:0.9rem;">lock</span>
+                                Private repository
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ════ 10. VAULT PLUGIN ════ -->
+                <div class="proj-card reveal reveal-up" data-category="tools" style="transition-delay:0.2s;">
+                    <div class="proj-card__media">
+                        <img src="https://iili.io/KZhouzF.png" alt="Vault Plugin" loading="lazy">
+                        <div class="proj-card__media-scrim"></div>
+                        <div class="proj-card__badges">
+                            <span class="proj-badge proj-badge--public">⬡ Public</span>
+                        </div>
+                    </div>
+                    <div class="proj-card__body">
+                        <span class="cat-chip">🎮 Minecraft Plugin</span>
+                        <h3 class="proj-card__title">Vault Plugin</h3>
+                        <p class="proj-card__desc">Economy, chat, and permissions abstraction API for Minecraft servers
+                            — plugin-agnostic integration layer.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">Bukkit API</span>
+                            <span class="tech-tag">Plugin Dev</span>
+                        </div>
+                        <div class="proj-card__actions">
+                            <a href="projects/vault.html" class="btn-view">View Project <span
+                                    class="material-symbols-outlined"
+                                    style="font-size:0.85rem;">arrow_forward</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ════ 11. KOLHAPURI CHAPPAL (Original) ════ -->
+                <div class="proj-card reveal reveal-up" data-category="ecommerce" style="transition-delay:0.25s;">
+                    <div class="proj-card__media">
+                        <img src="https://kolhapuri.blockcode.in/mens-kolhapuri-chappals-leather-sandals.jpg"
+                            alt="Kolhapuri Chappal" loading="lazy">
+                        <div class="proj-card__media-scrim"></div>
+                        <div class="proj-card__badges">
+                            <span class="proj-badge proj-badge--live"><span class="live-dot"></span> Live</span>
+                        </div>
+                    </div>
+                    <div class="proj-card__body">
+                        <span class="cat-chip">🛒 E-commerce</span>
+                        <h3 class="proj-card__title">Kolhapuri Chappal</h3>
+                        <p class="proj-card__desc">Traditional handcrafted leather footwear e-commerce store. Live at
+                            kolhapuri.blockcode.in.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">MySQL</span>
+                        </div>
+                        <div class="proj-card__actions">
+                            <a href="projects/kolhapuri.html" class="btn-view">View Project <span
+                                    class="material-symbols-outlined"
+                                    style="font-size:0.85rem;">arrow_forward</span></a>
+                            <a href="https://kolhapuri.blockcode.in" target="_blank" class="btn-live">↗ Live site</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ════ 12. SOLAR SYSTEM ════ -->
+                <div class="proj-card reveal reveal-up" data-category="creative" style="transition-delay:0.05s;">
+                    <div class="proj-card__media">
+                        <img src="https://iili.io/FQX1BaV.png" alt="Solar System Simulation" loading="lazy">
+                        <div class="proj-card__media-scrim"></div>
+                        <div class="proj-card__badges">
+                            <span class="proj-badge proj-badge--public">⬡ Public</span>
+                        </div>
+                    </div>
+                    <div class="proj-card__body">
+                        <span class="cat-chip">🎨 Creative / Canvas</span>
+                        <h3 class="proj-card__title">Solar System Simulation</h3>
+                        <p class="proj-card__desc">Interactive animated solar system built with HTML5 Canvas — planets
+                            orbit in real time, no libraries.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">HTML5 Canvas</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Physics</span>
+                        </div>
+                        <div class="proj-card__actions">
+                            <a href="projects/solar-system.html" class="btn-view">View Project <span
+                                    class="material-symbols-outlined"
+                                    style="font-size:0.85rem;">arrow_forward</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ════ 13. BIRTHDAY GIFT ════ -->
+                <div class="proj-card reveal reveal-up" data-category="creative" style="transition-delay:0.1s;">
+                    <div class="proj-card__media">
+                        <img src="https://iili.io/FQJ2PFn.png" alt="Birthday Gift" loading="lazy">
+                        <div class="proj-card__media-scrim"></div>
+                        <div class="proj-card__badges">
+                            <span class="proj-badge proj-badge--public">⬡ Public</span>
+                        </div>
+                    </div>
+                    <div class="proj-card__body">
+                        <span class="cat-chip">🎨 Personal / Template</span>
+                        <h3 class="proj-card__title">Birthday Gift</h3>
+                        <p class="proj-card__desc">Animated open-source personal gift website template — confetti,
+                            countdown, and music player included.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">HTML/CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">GSAP</span>
+                        </div>
+                        <div class="proj-card__actions">
+                            <a href="projects/birthday.html" class="btn-view">View Project <span
+                                    class="material-symbols-outlined"
+                                    style="font-size:0.85rem;">arrow_forward</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ════ 14. PREMIUM LOGIN PAGE ════ -->
+                <div class="proj-card reveal reveal-up" data-category="creative" style="transition-delay:0.15s;">
+                    <div class="proj-card__media">
+                        <img src="https://iili.io/KZDTWqx.png" alt="Premium Login Page" loading="lazy">
+                        <div class="proj-card__media-scrim"></div>
+                        <div class="proj-card__badges">
+                            <span class="proj-badge proj-badge--public">⬡ Public</span>
+                        </div>
+                    </div>
+                    <div class="proj-card__body">
+                        <span class="cat-chip">🎨 UI/UX</span>
+                        <h3 class="proj-card__title">Premium Login Page</h3>
+                        <p class="proj-card__desc">Sleek, fully responsive authentication interface with glass morphism
+                            design — copy-paste ready template.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">HTML/CSS</span>
+                            <span class="tech-tag">Tailwind CSS</span>
+                            <span class="tech-tag">JS</span>
+                        </div>
+                        <div class="proj-card__actions">
+                            <a href="projects/login-page.html" class="btn-view">View Project <span
+                                    class="material-symbols-outlined"
+                                    style="font-size:0.85rem;">arrow_forward</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Empty state (shown when no matches) -->
+                <div class="empty-state hidden" id="empty-state">
+                    <span class="material-symbols-outlined"
+                        style="font-size:3rem;margin-bottom:0.75rem;display:block;">search_off</span>
+                    <p class="font-bold text-lg">No projects in this category</p>
+                    <button class="filter-btn active mt-4" onclick="setFilter('all')">Show all projects</button>
+                </div>
+
+            </div><!-- /projects-grid -->
+
+            <!-- ── Back to portfolio CTA ── -->
+            <div class="flex justify-center mt-16 reveal reveal-up">
+                <a href="index.html#contact"
+                    class="bg-primary text-background px-8 py-4 rounded-xl font-bold hover:bg-primary-light transition-all flex items-center gap-2 shadow-md shadow-primary/20">
+                    Interested in working together?
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                </a>
+            </div>
+
+            <!-- ── Contact strip ── -->
+            <div
+                class="mt-20 bg-white/80 border border-primary/10 rounded-3xl p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6 reveal reveal-up">
+                <div>
+                    <h3 class="text-xl font-bold text-text-main">Like what you see?</h3>
+                    <p class="text-text-main/55 mt-1 text-sm">Drop me a message — I reply within 24 hours.</p>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                    <a href="mailto:hello@blockcode.in"
+                        class="inline-flex items-center gap-2 bg-primary text-background px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-primary-light transition-all">
+                        <span class="material-symbols-outlined text-base">mail</span>
+                        hello@blockcode.in
+                    </a>
+                    <a href="https://discord.com/invite/DugRxFGKGD" target="_blank"
+                        class="inline-flex items-center gap-2 border-2 border-primary/20 text-primary px-5 py-2.5 rounded-xl font-bold text-sm hover:border-primary/50 hover:bg-background-alt transition-all">
+                        <span class="material-symbols-outlined text-base">forum</span>
+                        Discord
+                    </a>
+                </div>
+            </div>
+
+        </div><!-- /max-w-7xl -->
+    </main>
+
+    <!-- ── Footer ── -->
+    <footer class="bg-primary text-background pt-20 pb-10 mt-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <!-- Brand Info -->
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="bg-background p-1.5 rounded-lg text-primary">
+                            <svg class="size-6" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                <path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z"
+                                    fill="currentColor" fill-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <span class="text-2xl font-black">Utkarsh</span>
+                    </div>
+                    <p class="text-sm opacity-60 leading-relaxed max-w-xs">
+                        Designing and engineering digital experiences that define the future. Let's build something
+                        exceptional together.
+                    </p>
+                </div>
+
+                <!-- Navigation -->
+                <div>
+                    <h4 class="text-sm font-black uppercase tracking-widest mb-6 opacity-40">Navigation</h4>
+                    <ul class="space-y-4">
+                        <li><a href="index.html"
+                                class="text-sm font-semibold hover:text-secondary-light transition-colors">Home</a></li>
+                        <li><a href="about.html"
+                                class="text-sm font-semibold hover:text-secondary-light transition-colors">About</a>
+                        </li>
+                        <li><a href="projects.html"
+                                class="text-sm font-semibold hover:text-secondary-light transition-colors">Projects</a>
+                        </li>
+                        <li><a href="blog.html"
+                                class="text-sm font-semibold hover:text-secondary-light transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services & Support -->
+                <div>
+                    <h4 class="text-sm font-black uppercase tracking-widest mb-6 opacity-40">Services</h4>
+                    <ul class="space-y-4">
+                        <li><a href="index.html#services"
+                                class="text-sm font-semibold hover:text-secondary-light transition-colors">Web Dev</a>
+                        </li>
+                        <li><a href="index.html#services"
+                                class="text-sm font-semibold hover:text-secondary-light transition-colors">Bot
+                                Infrastructure</a></li>
+                        <li><a href="terms-of-service.html"
+                                class="text-sm font-semibold hover:text-secondary-light transition-colors">Terms of
+                                Service</a></li>
+                        <li><a href="privacy-policy.html"
+                                class="text-sm font-semibold hover:text-secondary-light transition-colors">Privacy
+                                Policy</a></li>
+                    </ul>
+                </div>
+
+                <!-- Connect -->
+                <div>
+                    <h4 class="text-sm font-black uppercase tracking-widest mb-6 opacity-40">Connect</h4>
+                    <div class="flex gap-4 mb-6">
+                        <a href="https://github.com/hackerplayz41" target="_blank"
+                            class="size-10 rounded-full border border-background/20 flex items-center justify-center hover:bg-background hover:text-primary transition-all">
+                            <svg class="size-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                            </svg>
+                        </a>
+                        <a href="https://discord.com/invite/DugRxFGKGD" target="_blank"
+                            class="size-10 rounded-full border border-background/20 flex items-center justify-center hover:bg-background hover:text-primary transition-all">
+                            <svg class="size-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z" />
+                            </svg>
+                        </a>
+                    </div>
+                    <a href="mailto:hello@blockcode.in"
+                        class="inline-flex items-center gap-2 text-sm font-bold opacity-60 hover:opacity-100 transition-opacity underline-offset-4 hover:underline">
+                        <span class="material-symbols-outlined text-base">mail</span>
+                        hello@blockcode.in
+                    </a>
+                </div>
+            </div>
+
+            <div
+                class="flex flex-col md:flex-row justify-between items-center gap-6 pt-8 border-t border-background/10 opacity-55 text-xs">
+                <p>© 2026 Utkarsh Halwai. All rights reserved by Utkarsh Halwai.</p>
+                <div class="flex gap-8">
+                    <a class="hover:underline" href="privacy-policy.html">Privacy Policy</a>
+                    <a class="hover:underline" href="terms-of-service.html">Terms of Service</a>
+                </div>
+            </div>
         </div>
     </footer>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
     <script>
-        // Improved animation for project cards when they come into view
-        const projectCards = document.querySelectorAll('.project-card');
+        /* ── Filter Logic ── */
+        const filterBar = document.getElementById('filter-bar');
+        const grid = document.getElementById('projects-grid');
+        const emptyState = document.getElementById('empty-state');
+        const cards = grid.querySelectorAll('.proj-card:not(#empty-state)');
 
-        const animateCards = () => {
-            projectCards.forEach((card, index) => {
-                const cardPosition = card.getBoundingClientRect().top;
-                const screenPosition = window.innerHeight / 1.3;
-
-                if (cardPosition < screenPosition) {
-                    // Add delay for staggered animation
-                    setTimeout(() => {
-                        card.classList.add('animated');
-                    }, index * 100);
-                }
+        function setFilter(filter) {
+            // Update button states
+            filterBar.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.filter === filter);
             });
-        };
 
-        // Set initial state
-        projectCards.forEach(card => {
-            card.style.transition = 'all 0.5s ease';
+            // Filter cards
+            let visible = 0;
+            cards.forEach(card => {
+                const cats = card.dataset.category || '';
+                const match = filter === 'all' || cats.includes(filter);
+                card.classList.toggle('hidden', !match);
+                if (match) visible++;
+            });
+
+            // Show/hide empty state
+            emptyState.classList.toggle('hidden', visible > 0);
+        }
+
+        // Bind buttons
+        filterBar.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => setFilter(btn.dataset.filter));
         });
 
-        window.addEventListener('scroll', animateCards);
-        window.addEventListener('load', animateCards);
+        // Keyboard shortcut: press '1'-'6' to switch filters quickly
+        const filterKeys = ['all', 'live', 'hosting', 'ecommerce', 'tools', 'creative'];
+        document.addEventListener('keydown', e => {
+            const idx = parseInt(e.key) - 1;
+            if (idx >= 0 && idx < filterKeys.length) {
+                setFilter(filterKeys[idx]);
+            }
+        });
     </script>
 </body>
 
