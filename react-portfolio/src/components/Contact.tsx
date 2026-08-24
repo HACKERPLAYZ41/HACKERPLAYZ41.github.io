@@ -14,17 +14,13 @@ const Contact = () => {
         const data = Object.fromEntries(formData.entries());
 
         try {
-            // Web3Forms free API for sending contact form directly to Email / Discord
-            const response = await fetch('https://api.web3forms.com/submit', {
+            // Pointing to the secure PHP backend
+            const response = await fetch('/minecarftlockdown.fun/api/contact/index.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Accept': 'application/json'
                 },
-                body: JSON.stringify({
-                    access_key: '60dea98d-be02-45ba-ad87-68872ac5d917',
-                    ...data
-                }),
+                body: JSON.stringify(data),
             });
 
             const result = await response.json();
