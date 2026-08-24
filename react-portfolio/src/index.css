@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #4f633d;
+  --color-primary-light: #708a58;
+  --color-secondary: #abbf97;
+  --color-background: #f3f6ef;
+  --color-background-alt: #e5eadd;
+  --color-text-main: #191f14;
+
+  --color-axolotl-50: #f3f6ef;
+  --color-axolotl-100: #e5eadd;
+  --color-axolotl-200: #ccd8be;
+  --color-axolotl-300: #abbf97;
+  --color-axolotl-400: #8da675;
+  --color-axolotl-500: #708a58;
+  --color-axolotl-600: #4f633d;
+  --color-axolotl-700: #445536;
+  --color-axolotl-800: #39452f;
+  --color-axolotl-900: #323c2b;
+  --color-axolotl-950: #191f14;
+
+  --font-display: "Inter", sans-serif;
+
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-text-main font-display antialiased;
+  }
+}
+
+/* Custom Utilities from existing style.css */
+@layer utilities {
+  .glass-nav {
+    @apply bg-background/80 backdrop-blur-md border-b border-primary/5;
+  }
+
+  .section-label {
+    @apply inline-block px-4 py-1.5 bg-primary/10 rounded-full text-primary font-bold text-[0.65rem] tracking-wider uppercase;
+  }
+}
+
+/* GSAP/Framer related classes */
+.reveal {
+  opacity: 0;
+}

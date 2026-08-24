@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Utkarsh Halwai | Developer & Founder — blockcode.in</title>
+    <meta name="description"
+        content="Hi, I'm Utkarsh Halwai — full-stack developer with 2 years of experience, Discord bot builder, and founder of blockcode.in. Explore my projects and get in touch.">
+
+    <!-- Scripts & Fonts -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+
+    <!-- External Styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/png" href="assets/img/favicons/favicon.png">
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4f633d",
+                        "primary-light": "#708a58",
+                        "secondary": "#abbf97",
+                        "background": "#f3f6ef",
+                        "background-alt": "#e5eadd",
+                        "text-main": "#191f14",
+                        "axolotl": {
+                            '50': '#f3f6ef',
+                            '100': '#e5eadd',
+                            '200': '#ccd8be',
+                            '300': '#abbf97',
+                            '400': '#8da675',
+                            '500': '#708a58',
+                            '600': '#4f633d',
+                            '700': '#445536',
+                            '800': '#39452f',
+                            '900': '#323c2b',
+                            '950': '#191f14',
+                        }
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-background text-text-main font-display">
+
+    <!-- ═══════════════════════════════════════════════
+         HEADER / TOP NAV
+    ═══════════════════════════════════════════════ -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="bg-primary p-1.5 rounded-lg text-white">
+                    <svg class="size-6" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z"
+                            fill="currentColor" fill-rule="evenodd"></path>
+                    </svg>
+                </div>
+                <span class="text-xl font-black tracking-tight text-primary">Utkarsh</span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-8">
+                <a class="text-sm font-semibold hover:text-primary transition-colors" href="#home">Home</a>
+                <a class="text-sm font-semibold hover:text-primary transition-colors" href="about.html">About</a>
+                <a class="text-sm font-semibold hover:text-primary transition-colors" href="#projects">Projects</a>
+                <a class="text-sm font-semibold hover:text-primary transition-colors" href="blog.html">Blog</a>
+                <a class="text-sm font-semibold hover:text-primary transition-colors" href="#services">Services</a>
+                <a class="text-sm font-semibold hover:text-primary transition-colors" href="#contact">Contact</a>
+            </nav>
+
+            <!-- Right Actions -->
+            <div class="flex items-center gap-3">
+                <a href="#contact"
+                    class="hidden sm:inline-flex bg-primary text-background px-5 py-2.5 rounded-lg text-sm font-bold hover:bg-primary-light transition-all shadow-sm">
+                    Say Hello
+                </a>
+                <!-- Hamburger -->
+                <button id="hamburger" class="hamburger md:hidden" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu" class="mobile-menu">
+        <a href="#home">Home</a>
+        <a href="about.html">About</a>
+        <a href="#projects">Projects</a>
+        <a href="blog.html">Blog</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact" class="menu-cta">Say Hello 👋</a>
+    </div>
+
+    <main class="pt-20">
+
+        <!-- ═══════════════════════════════════════════════
+             HERO
+        ═══════════════════════════════════════════════ -->
+        <section class="relative overflow-hidden py-20 lg:py-28" id="home">
+            <!-- Background blobs -->
+            <div class="hero-blob"></div>
+            <div class="hero-blob-2"></div>
+
+            <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Left: text -->
+                <div class="flex flex-col gap-7 z-10 reveal reveal-left">
+
+                    <!-- Personal tag -->
+                    <div class="reveal reveal-left">
+                        <h2 class="text-primary font-black text-6xl lg:text-8xl tracking-tighter leading-none mb-4">
+                            Hello<span class="text-text-main">.</span>
+                        </h2>
+                        <div
+                            class="flex items-center gap-3 bg-primary/5 border border-primary/10 px-5 py-2.5 rounded-2xl w-fit mb-4">
+                            <span class="text-2xl animate-bounce-slow">👋</span>
+                            <span class="text-sm font-black uppercase tracking-widest text-primary">I'm Utkarsh
+                                Halwai</span>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-4">
+                        <h1 class="text-5xl lg:text-7xl font-black leading-[1.05] tracking-tighter text-text-main mt-2">
+                            Crafting <span class="text-gradient">Premium</span><br>
+                            Digital Solutions.
+                        </h1>
+                        <p class="text-lg text-text-main/70 max-w-lg leading-relaxed">
+                            <span id="typed-text" class="font-bold text-primary"></span><span
+                                class="typed-cursor"></span>
+                        </p>
+                        <p class="text-base text-text-main/60 max-w-lg leading-relaxed">
+                            Founder of <a href="https://blockcode.in" target="_blank"
+                                class="text-primary font-semibold hover:underline">blockcode.in</a> — I design
+                            and engineer everything from Discord bots and Minecraft hosting to high-end full-stack web
+                            apps.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-wrap gap-4 mt-2">
+                        <a href="#projects"
+                            class="bg-primary text-background px-8 py-4 rounded-xl font-bold hover:bg-primary-light active:scale-95 transition-all flex items-center gap-2 shadow-xl shadow-primary/25">
+                            Explore Projects
+                            <span class="material-symbols-outlined text-[1.2rem]">rocket_launch</span>
+                        </a>
+                        <a href="#contact"
+                            class="bg-white border-2 border-primary/15 text-primary px-8 py-4 rounded-xl font-bold hover:border-primary/40 hover:bg-background-alt transition-all">
+                            Let's Talk
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right: 3D Card Swap -->
+                <div class="relative h-[520px] flex items-center justify-center reveal reveal-right"
+                    style="transition-delay: 0.2s;">
+                    <div class="card-swap-container">
+                        <div class="swap-card">
+                            <img src="assets/img/projects/modern_dashboard.png" class="card-img"
+                                alt="Modern SaaS Dashboard">
+                        </div>
+                        <div class="swap-card">
+                            <img src="assets/img/projects/creative_agency.png" class="card-img"
+                                alt="Creative Agency Landing">
+                        </div>
+                        <div class="swap-card">
+                            <img src="assets/img/projects/ecommerce_lux.png" class="card-img"
+                                alt="Luxury E-commerce Store">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════
+             STATS BAR
+        ═══════════════════════════════════════════════ -->
+        <section class="py-12 bg-white">
+            <div class="max-w-5xl mx-auto px-6">
+                <div class="stats-bar reveal reveal-up">
+                    <div class="stats-bar__item">
+                        <p class="stats-bar__number">11+</p>
+                        <p class="stats-bar__label">Projects Built</p>
+                    </div>
+                    <div class="stats-bar__item">
+                        <p class="stats-bar__number">2+</p>
+                        <p class="stats-bar__label">Years Coding</p>
+                    </div>
+                    <div class="stats-bar__item">
+                        <p class="stats-bar__number">500+</p>
+                        <p class="stats-bar__label">Clients Served</p>
+                    </div>
+                    <div class="stats-bar__item">
+                        <p class="stats-bar__number">99.9%</p>
+                        <p class="stats-bar__label">Uptime SLA</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════
+             PROJECTS SECTION — MAGIC BENTO GRID
+        ═══════════════════════════════════════════════ -->
+        <section class="py-12 md:py-24 bento-section" id="projects">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="mb-12 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 reveal reveal-up">
+                    <div>
+                        <span class="section-label">
+                            <span class="material-symbols-outlined text-sm">grid_view</span>
+                            My Work
+                        </span>
+                        <h2 class="text-3xl lg:text-4xl font-bold text-text-main">
+                            Projects & <span class="text-primary">Builds</span>
+                        </h2>
+                        <p class="text-text-main/55 mt-2">Hover a card to explore — click to read more.</p>
+                    </div>
+                    <a href="projects.html"
+                        class="inline-flex items-center gap-2 text-sm font-bold text-primary border-2 border-primary/20 hover:border-primary/50 hover:bg-background-alt px-5 py-2.5 rounded-xl transition-all flex-shrink-0">
+                        View All 14 Projects
+                        <span class="material-symbols-outlined text-base">open_in_new</span>
+                    </a>
+                </div>
+
+                <div class="bento-grid">
+
+                    <!-- ① BLOCKCODE.IN — Featured 2×2 -->
+                    <a href="projects/blockcode.html" class="bento-card bento-card--featured reveal reveal-up">
+                        <div class="bento-card__bg">
+                            <img src="https://blockcode.in/assets/BlockCode-Website-Hero-Image-Promptpng.png"
+                                alt="Blockcode.in">
+                        </div>
+                        <div class="bento-card__scrim"></div>
+                        <div class="bento-card__header">
+                            <div class="bento-card__icon">
+                                <span class="material-symbols-outlined" style="font-size:1.3rem;">rocket_launch</span>
+                            </div>
+                            <span class="bento-card__tag bento-card__tag--olive">⭐ Featured</span>
+                        </div>
+                        <div class="bento-card__footer">
+                            <h3 class="bento-card__title">Blockcode.in</h3>
+                            <p class="bento-card__description">High-performance hosting for Discord bots and Minecraft
+                                servers — built from scratch.</p>
+                            <span class="bento-card__arrow">
+                                View project <span class="material-symbols-outlined"
+                                    style="font-size:0.85rem;">arrow_forward</span>
+                            </span>
+                        </div>
+                    </a>
+
+                    <!-- ② VAULT PLUGIN — 1×1 -->
+                    <a href="projects/vault.html" class="bento-card reveal reveal-up" style="transition-delay:0.05s;">
+                        <div class="bento-card__bg">
+                            <img src="https://iili.io/KZhouzF.png" alt="Vault Plugin">
+                        </div>
+                        <div class="bento-card__scrim"></div>
+                        <div class="bento-card__header">
+                            <div class="bento-card__icon">
+                                <span class="material-symbols-outlined" style="font-size:1.1rem;">api</span>
+                            </div>
+                            <span class="bento-card__tag">Plugin</span>
+                        </div>
+                        <div class="bento-card__footer">
+                            <h3 class="bento-card__title">Vault Plugin</h3>
+                            <p class="bento-card__description">Economy, chat, and permissions API for Minecraft servers.
+                            </p>
+                        </div>
+                    </a>
+
+                    <!-- ③ DISCORD PROFILE FINDER — Tall 1×2 -->
+                    <a href="projects/discord-finder.html" class="bento-card reveal reveal-up"
+                        style="transition-delay:0.1s;">
+                        <div class="bento-card__bg">
+                            <img src="https://iili.io/FQWWjRV.png" alt="Discord Profile Finder">
+                        </div>
+                        <div class="bento-card__scrim"></div>
+                        <div class="bento-card__header">
+                            <div class="bento-card__icon">
+                                <span class="material-symbols-outlined" style="font-size:1.1rem;">search</span>
+                            </div>
+                            <span class="bento-card__tag">API</span>
+                        </div>
+                        <div class="bento-card__footer">
+                            <h3 class="bento-card__title">Discord Profile Finder</h3>
+                            <p class="bento-card__description">Real-time Discord profile viewer with multi-API
+                                integration.</p>
+                            <span class="bento-card__arrow">
+                                View project <span class="material-symbols-outlined"
+                                    style="font-size:0.85rem;">arrow_forward</span>
+                            </span>
+                        </div>
+                    </a>
+
+                    <!-- ④ E-COMMERCE STORE — 1×1 -->
+                    <a href="projects/ecommerce.html" class="bento-card reveal reveal-up"
+                        style="transition-delay:0.15s;">
+                        <div class="bento-card__bg">
+                            <img src="https://iili.io/KIGtUut.jpg" alt="E-commerce Store">
+                        </div>
+                        <div class="bento-card__scrim"></div>
+                        <div class="bento-card__header">
+                            <div class="bento-card__icon">
+                                <span class="material-symbols-outlined" style="font-size:1.1rem;">shopping_cart</span>
+                            </div>
+                            <span class="bento-card__tag">E-commerce</span>
+                        </div>
+                        <div class="bento-card__footer">
+                            <h3 class="bento-card__title">E-commerce Store</h3>
+                            <p class="bento-card__description">Full-stack store with ZIP delivery and Razorpay payment
+                                integration.</p>
+                        </div>
+                    </a>
+
+                    <!-- ⑤ CHATBOT WIDGET — 1×1 -->
+                    <a href="projects/chatbot.html" class="bento-card reveal reveal-up" style="transition-delay:0.2s;">
+                        <div class="bento-card__bg">
+                            <img src="https://iili.io/Klg81Hl.png" alt="Chatbot Widget">
+                        </div>
+                        <div class="bento-card__scrim"></div>
+                        <div class="bento-card__header">
+                            <div class="bento-card__icon">
+                                <span class="material-symbols-outlined" style="font-size:1.1rem;">smart_toy</span>
+                            </div>
+                            <span class="bento-card__tag">AI</span>
+                        </div>
+                        <div class="bento-card__footer">
+                            <h3 class="bento-card__title">Chatbot Widget</h3>
+                            <p class="bento-card__description">Embeddable AI chatbot with secure user authentication.
+                            </p>
+                        </div>
+                    </a>
+
+                    <!-- ⑥ KOLHAPURI CHAPPAL — Wide 2×1 -->
+                    <a href="projects/kolhapuri.html" class="bento-card reveal reveal-up"
+                        style="transition-delay:0.25s;">
+                        <div class="bento-card__bg">
+                            <img src="https://kolhapuri.blockcode.in/mens-kolhapuri-chappals-leather-sandals.jpg"
+                                alt="Kolhapuri Chappal">
+                        </div>
+                        <div class="bento-card__scrim"></div>
+                        <div class="bento-card__header">
+                            <div class="bento-card__icon">
+                                <span class="material-symbols-outlined" style="font-size:1.1rem;">footprint</span>
+                            </div>
+                            <span class="bento-card__tag">E-commerce</span>
+                        </div>
+                        <div class="bento-card__footer">
+                            <h3 class="bento-card__title">Kolhapuri Chappal</h3>
+                            <p class="bento-card__description">Traditional handcrafted leather footwear e-commerce
+                                platform.</p>
+                            <span class="bento-card__arrow">
+                                View project <span class="material-symbols-outlined"
+                                    style="font-size:0.85rem;">arrow_forward</span>
+                            </span>
+                        </div>
+                    </a>
+
+                    <!-- ⑦ SOLAR SYSTEM — 1×1 -->
+                    <a href="projects/solar-system.html" class="bento-card reveal reveal-up"
+                        style="transition-delay:0.3s;">
+                        <div class="bento-card__bg">
+                            <img src="https://iili.io/FQX1BaV.png" alt="Solar System Simulation">
+                        </div>
+                        <div class="bento-card__scrim"></div>
+                        <div class="bento-card__header">
+                            <div class="bento-card__icon">
+                                <span class="material-symbols-outlined" style="font-size:1.1rem;">public</span>
+                            </div>
+                            <span class="bento-card__tag">Canvas</span>
+                        </div>
+                        <div class="bento-card__footer">
+                            <h3 class="bento-card__title">Solar System</h3>
+                            <p class="bento-card__description">Interactive 3D simulation built with HTML5 Canvas.</p>
+                        </div>
+                    </a>
+
+                    <!-- ⑧ BIRTHDAY GIFT — 1×1 -->
+                    <a href="projects/birthday.html" class="bento-card reveal reveal-up"
+                        style="transition-delay:0.35s;">
+                        <div class="bento-card__bg">
+                            <img src="https://iili.io/FQJ2PFn.png" alt="Birthday Gift">
+                        </div>
+                        <div class="bento-card__scrim"></div>
+                        <div class="bento-card__header">
+                            <div class="bento-card__icon">
+                                <span class="material-symbols-outlined"
+                                    style="font-size:1.1rem;">featured_seasonal_and_gifts</span>
+                            </div>
+                            <span class="bento-card__tag">Personal</span>
+                        </div>
+                        <div class="bento-card__footer">
+                            <h3 class="bento-card__title">Birthday Gift</h3>
+                            <p class="bento-card__description">Animated open-source personal gift website template.</p>
+                        </div>
+                    </a>
+
+                    <!-- ⑨ LOGIN PAGE — 1×1 -->
+                    <a href="projects/login-page.html" class="bento-card reveal reveal-up"
+                        style="transition-delay:0.4s;">
+                        <div class="bento-card__bg">
+                            <img src="https://iili.io/KZDTWqx.png" alt="Premium Login Page">
+                        </div>
+                        <div class="bento-card__scrim"></div>
+                        <div class="bento-card__header">
+                            <div class="bento-card__icon">
+                                <span class="material-symbols-outlined" style="font-size:1.1rem;">login</span>
+                            </div>
+                            <span class="bento-card__tag">UI/UX</span>
+                        </div>
+                        <div class="bento-card__footer">
+                            <h3 class="bento-card__title">Premium Login Page</h3>
+                            <p class="bento-card__description">Sleek, responsive authentication interface design.</p>
+                        </div>
+                    </a>
+
+                    <!-- ⑩ SORRY PAGE — Wide 2×1 -->
+                    <a href="projects/sorry-page.html" class="bento-card reveal reveal-up"
+                        style="transition-delay:0.45s;">
+                        <div class="bento-card__bg">
+                            <img src="https://iili.io/KZDagwB.png" alt="Personal Sorry Page">
+                        </div>
+                        <div class="bento-card__scrim"></div>
+                        <div class="bento-card__header">
+                            <div class="bento-card__icon">
+                                <span class="material-symbols-outlined"
+                                    style="font-size:1.1rem;">sentiment_very_satisfied</span>
+                            </div>
+                            <span class="bento-card__tag">Personal</span>
+                        </div>
+                        <div class="bento-card__footer">
+                            <h3 class="bento-card__title">Personal Sorry Page</h3>
+                            <p class="bento-card__description">Modern aesthetic personal message page built with
+                                Tailwind CSS.</p>
+                            <span class="bento-card__arrow">
+                                View project <span class="material-symbols-outlined"
+                                    style="font-size:0.85rem;">arrow_forward</span>
+                            </span>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ═══════════════════════════════════════════════
+             TECH STACK (Cooler UI)
+        ═══════════════════════════════════════════════ -->
+        <section class="py-12 md:py-24 bg-background border-y border-primary/5">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16 reveal reveal-up">
+                    <span
+                        class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full w-fit mb-6">
+                        <span class="material-symbols-outlined text-sm">code</span>
+                        <span class="text-xs font-bold uppercase tracking-wider">Tech Stack</span>
+                    </span>
+                    <h2 class="text-3xl lg:text-4xl font-bold text-text-main mb-4">
+                        Tools I Work With
+                    </h2>
+                    <p class="text-text-main opacity-60 max-w-2xl mx-auto">The technologies and frameworks I use to
+                        build scalable digital experiences.</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6 reveal reveal-up" style="transition-delay: 0.1s;">
+                    <!-- Frontend -->
+                    <div
+                        class="bg-white rounded-2xl p-8 border border-primary/10 shadow-sm hover:shadow-md transition-all hover:-translate-y-1">
+                        <div
+                            class="size-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined">web</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-6 text-text-main">Frontend & UI</h3>
+                        <div class="flex flex-col gap-4">
+                            <div class="flex items-center justify-between"><span
+                                    class="font-semibold text-text-main/80">React & Next.js</span> <span
+                                    class="text-xl">⚛️</span></div>
+                            <div class="w-full h-px bg-primary/5"></div>
+                            <div class="flex items-center justify-between"><span
+                                    class="font-semibold text-text-main/80">Tailwind CSS</span> <span
+                                    class="text-xl">🎨</span></div>
+                            <div class="w-full h-px bg-primary/5"></div>
+                            <div class="flex items-center justify-between"><span
+                                    class="font-semibold text-text-main/80">GSAP Animations</span> <span
+                                    class="text-xl">🎭</span></div>
+                            <div class="w-full h-px bg-primary/5"></div>
+                            <div class="flex items-center justify-between"><span
+                                    class="font-semibold text-text-main/80">HTML5 & JS (ES2022+)</span> <span
+                                    class="text-xl">⚡</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Backend -->
+                    <div
+                        class="bg-white rounded-2xl p-8 border border-primary/10 shadow-sm hover:shadow-md transition-all hover:-translate-y-1">
+                        <div
+                            class="size-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined">dns</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-6 text-text-main">Backend & DB</h3>
+                        <div class="flex flex-col gap-4">
+                            <div class="flex items-center justify-between"><span
+                                    class="font-semibold text-text-main/80">Node.js (TypeScript)</span> <span
+                                    class="text-xl">🟢</span></div>
+                            <div class="w-full h-px bg-primary/5"></div>
+                            <div class="flex items-center justify-between"><span
+                                    class="font-semibold text-text-main/80">PHP</span> <span class="text-xl">🐘</span>
+                            </div>
+                            <div class="w-full h-px bg-primary/5"></div>
+                            <div class="flex items-center justify-between"><span
+                                    class="font-semibold text-text-main/80">MySQL</span> <span class="text-xl">🐬</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Specialized -->
+                    <div
+                        class="bg-white rounded-2xl p-8 border border-primary/10 shadow-sm hover:shadow-md transition-all hover:-translate-y-1">
+                        <div
+                            class="size-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined">smart_toy</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-6 text-text-main">Specialized & Tools</h3>
+                        <div class="flex flex-col gap-4">
+                            <div class="flex items-center justify-between"><span
+                                    class="font-semibold text-text-main/80">Discord.js</span> <span
+                                    class="text-xl">🤖</span></div>
+                            <div class="w-full h-px bg-primary/5"></div>
+                            <div class="flex items-center justify-between"><span
+                                    class="font-semibold text-text-main/80">Java (Minecraft)</span> <span
+                                    class="text-xl">☕</span></div>
+                            <div class="w-full h-px bg-primary/5"></div>
+                            <div class="flex items-center justify-between"><span
+                                    class="font-semibold text-text-main/80">Git & GitHub</span> <span
+                                    class="text-xl">🐙</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════
+             WHAT I BRING (was "Why Choose Us")
+        ═══════════════════════════════════════════════ -->
+        <section class="py-12 md:py-20 bg-white">
+            <div class="max-w-5xl mx-auto px-6">
+                <div class="text-center mb-12 reveal reveal-up">
+                    <span class="section-label">
+                        <span class="material-symbols-outlined text-sm">star</span>
+                        My Edge
+                    </span>
+                    <h2 class="text-3xl font-bold">What I Bring to the Table</h2>
+                </div>
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div
+                        class="flex flex-col items-center text-center gap-3 p-6 bg-background rounded-2xl reveal reveal-up">
+                        <span class="material-symbols-outlined text-primary text-4xl">rocket_launch</span>
+                        <h4 class="font-bold text-base">High Performance</h4>
+                        <p class="text-sm opacity-55 leading-relaxed">Fast, optimized builds — no bloat.</p>
+                    </div>
+                    <div class="flex flex-col items-center text-center gap-3 p-6 bg-background rounded-2xl reveal reveal-up"
+                        style="transition-delay: 0.08s;">
+                        <span class="material-symbols-outlined text-primary text-4xl">security</span>
+                        <h4 class="font-bold text-base">Secure by Default</h4>
+                        <p class="text-sm opacity-55 leading-relaxed">Auth, firewalls & DDoS protection built in.</p>
+                    </div>
+                    <div class="flex flex-col items-center text-center gap-3 p-6 bg-background rounded-2xl reveal reveal-up"
+                        style="transition-delay: 0.16s;">
+                        <span class="material-symbols-outlined text-primary text-4xl">settings_input_component</span>
+                        <h4 class="font-bold text-base">Easy to Manage</h4>
+                        <p class="text-sm opacity-55 leading-relaxed">Clean code and intuitive control panels.</p>
+                    </div>
+                    <div class="flex flex-col items-center text-center gap-3 p-6 bg-background rounded-2xl reveal reveal-up"
+                        style="transition-delay: 0.24s;">
+                        <span class="material-symbols-outlined text-primary text-4xl">support_agent</span>
+                        <h4 class="font-bold text-base">Always Reachable</h4>
+                        <p class="text-sm opacity-55 leading-relaxed">I reply fast — Discord, email, or GitHub.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════
+             SERVICES / FREELANCE WORK
+        ═══════════════════════════════════════════════ -->
+        <section class="py-12 md:py-24 bg-background" id="services">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-14 reveal reveal-up">
+                    <span class="section-label">
+                        <span class="material-symbols-outlined text-sm">handshake</span>
+                        Freelance & Services
+                    </span>
+                    <h2 class="text-3xl lg:text-4xl font-bold text-text-main">What I Can Build for You</h2>
+                    <p class="text-text-main/55 max-w-xl mx-auto mt-3 leading-relaxed">From hosting infrastructure to
+                        custom web apps — I take on freelance work with a focus on quality and reliability.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <!-- Service 1 -->
+                    <div class="group service-card p-8 reveal reveal-up" style="transition-delay: 0.05s;">
+                        <div
+                            class="size-13 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-background transition-colors w-14 h-14">
+                            <span class="material-symbols-outlined">sports_esports</span>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2 text-text-main">Minecraft Hosting</h3>
+                        <p class="text-text-main/65 leading-relaxed mb-5 text-sm">NVMe SSDs, DDoS protection, and 99.9%
+                            uptime for the best gaming experience.</p>
+                        <a class="text-primary text-sm font-bold flex items-center gap-1.5 hover:gap-3 transition-all"
+                            href="https://blockcode.in" target="_blank">
+                            Visit blockcode.in <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </a>
+                    </div>
+                    <!-- Service 2 -->
+                    <div class="group service-card p-8 reveal reveal-up" style="transition-delay: 0.1s;">
+                        <div
+                            class="size-13 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-background transition-colors w-14 h-14">
+                            <span class="material-symbols-outlined">smart_toy</span>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2 text-text-main">Bot Hosting & Dev</h3>
+                        <p class="text-text-main/65 leading-relaxed mb-5 text-sm">Discord & Telegram bots on reliable
+                            infrastructure — 24/7 runtime, easy management.</p>
+                        <a class="text-primary text-sm font-bold flex items-center gap-1.5 hover:gap-3 transition-all"
+                            href="#contact">
+                            Get a Quote <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </a>
+                    </div>
+                    <!-- Service 3 -->
+                    <div class="group service-card p-8 reveal reveal-up" style="transition-delay: 0.15s;">
+                        <div
+                            class="size-13 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-background transition-colors w-14 h-14">
+                            <span class="material-symbols-outlined">code_blocks</span>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2 text-text-main">Web Development</h3>
+                        <p class="text-text-main/65 leading-relaxed mb-5 text-sm">From SaaS landing pages to complex
+                            dashboards — built with modern stacks and clean code.</p>
+                        <a class="text-primary text-sm font-bold flex items-center gap-1.5 hover:gap-3 transition-all"
+                            href="#contact">
+                            Work with Me <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════
+             CONTACT SECTION
+        ═══════════════════════════════════════════════ -->
+        <section class="py-12 md:py-24 bg-white" id="contact">
+            <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16">
+                <!-- Left -->
+                <div class="space-y-8 reveal reveal-left">
+                    <div>
+                        <span class="section-label">
+                            <span class="material-symbols-outlined text-sm">mail</span>
+                            Contact
+                        </span>
+                        <h2 class="text-4xl font-bold text-text-main">Let's build something
+                            <span class="text-primary">extraordinary</span>.
+                        </h2>
+                        <p class="text-lg opacity-60 mt-4 leading-relaxed">Have a project in mind? I'll get back to you
+                            within 24 hours.</p>
+                    </div>
+                    <div class="space-y-5">
+                        <a href="mailto:hello@blockcode.in" class="flex items-center gap-4 group">
+                            <div
+                                class="size-12 bg-primary text-background rounded-xl flex items-center justify-center group-hover:bg-primary-light transition-colors flex-shrink-0">
+                                <span class="material-symbols-outlined">mail</span>
+                            </div>
+                            <div>
+                                <p class="text-xs uppercase opacity-40 font-bold tracking-widest">Email</p>
+                                <p class="text-base font-bold group-hover:text-primary transition-colors">
+                                    hello@blockcode.in</p>
+                            </div>
+                        </a>
+                        <a href="https://discord.com/invite/DugRxFGKGD" target="_blank"
+                            class="flex items-center gap-4 group">
+                            <div
+                                class="size-12 bg-primary text-background rounded-xl flex items-center justify-center group-hover:bg-primary-light transition-colors flex-shrink-0">
+                                <span class="material-symbols-outlined">forum</span>
+                            </div>
+                            <div>
+                                <p class="text-xs uppercase opacity-40 font-bold tracking-widest">Discord</p>
+                                <p class="text-base font-bold group-hover:text-primary transition-colors">
+                                    discord</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div
+                    class="bg-background p-8 lg:p-10 rounded-3xl border border-primary/5 shadow-lg reveal reveal-right">
+                    <form class="space-y-5" id="contact-form">
+                        <div class="grid sm:grid-cols-2 gap-5">
+                            <div class="space-y-1.5">
+                                <label class="text-sm font-bold opacity-60">Full Name</label>
+                                <input id="cf-name" class="contact-input" placeholder="John Doe" type="text" />
+                            </div>
+                            <div class="space-y-1.5">
+                                <label class="text-sm font-bold opacity-60">Email Address</label>
+                                <input id="cf-email" class="contact-input" placeholder="john@example.com"
+                                    type="email" />
+                            </div>
+                        </div>
+                        <div class="space-y-1.5">
+                            <label class="text-sm font-bold opacity-60">Subject</label>
+                            <select id="cf-subject" class="contact-input">
+                                <option>General Inquiry</option>
+                                <option>Hosting Support</option>
+                                <option>Project Development</option>
+                                <option>Partnership</option>
+                            </select>
+                        </div>
+                        <div class="space-y-1.5">
+                            <label class="text-sm font-bold opacity-60">Message</label>
+                            <textarea id="cf-message" class="contact-input resize-none"
+                                placeholder="Tell me about your project..." rows="4"></textarea>
+                        </div>
+                        <button
+                            class="w-full bg-primary text-background py-3.5 rounded-xl font-bold hover:bg-primary-light hover:shadow-lg transition-all flex items-center justify-center gap-2"
+                            type="submit">
+                            Send Message
+                            <span class="material-symbols-outlined">send</span>
+                        </button>
+                        <p class="text-center text-xs text-text-main/40 mt-1">
+                            Sends directly to my inbox · or email directly:
+                            <a href="mailto:hello@blockcode.in"
+                                class="text-primary font-semibold hover:underline">hello@blockcode.in</a>
+                        </p>
+                    </form>
+                    <script>
+                        document.getElementById('contact-form').addEventListener('submit', async function (e) {
+                            e.preventDefault();
+
+                            const btn = this.querySelector('button[type="submit"]');
+                            const originalHTML = btn.innerHTML;
+                            btn.innerHTML = 'Sending... <span class="material-symbols-outlined animate-spin">sync</span>';
+                            btn.disabled = true;
+
+                            const data = {
+                                name: document.getElementById('cf-name').value.trim(),
+                                email: document.getElementById('cf-email').value.trim(),
+                                subject: document.getElementById('cf-subject').value,
+                                message: document.getElementById('cf-message').value.trim()
+                            };
+
+                            try {
+                                const response = await fetch('https://minecarftlockdown.fun/api/contact', {
+                                    method: 'POST',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify(data)
+                                });
+
+                                if (response.ok) {
+                                    btn.innerHTML = 'Message Sent! <span class="material-symbols-outlined">check_circle</span>';
+                                    btn.classList.add('bg-green-600');
+                                    this.reset();
+                                } else {
+                                    throw new Error('Server error');
+                                }
+                            } catch (err) {
+                                btn.innerHTML = 'Error Sending <span class="material-symbols-outlined">error</span>';
+                                btn.classList.add('bg-red-500');
+                            }
+
+                            setTimeout(() => {
+                                btn.innerHTML = originalHTML;
+                                btn.disabled = false;
+                                btn.classList.remove('bg-green-600', 'bg-red-500');
+                            }, 3000);
+                        });
+                    </script>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ═══════════════════════════════════════════════
+         FOOTER
+    ═══════════════════════════════════════════════ -->
+    <footer class="bg-primary text-background pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <!-- Brand Info -->
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="bg-background p-1.5 rounded-lg text-primary">
+                            <svg class="size-6" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                <path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z"
+                                    fill="currentColor" fill-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <span class="text-2xl font-black">Utkarsh</span>
+                    </div>
+                    <p class="text-sm opacity-60 leading-relaxed max-w-xs">
+                        Designing and engineering digital experiences that define the future. Let's build something
+                        exceptional together.
+                    </p>
+                </div>
+
+                <!-- Navigation -->
+                <div>
+                    <h4 class="text-sm font-black uppercase tracking-widest mb-6 opacity-40">Navigation</h4>
+                    <ul class="space-y-4">
+                        <li><a href="#home"
+                                class="text-sm font-semibold hover:text-secondary-light transition-colors">Home</a></li>
+                        <li><a href="about.html"
+                                class="text-sm font-semibold hover:text-secondary-light transition-colors">About</a>
+                        </li>
+                        <li><a href="#projects"
+                                class="text-sm font-semibold hover:text-secondary-light transition-colors">Projects</a>
+                        </li>
+                        <li><a href="blog.html"
+                                class="text-sm font-semibold hover:text-secondary-light transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services & Support -->
+                <div>
+                    <h4 class="text-sm font-black uppercase tracking-widest mb-6 opacity-40">Services</h4>
+                    <ul class="space-y-4">
+                        <li><a href="#services"
+                                class="text-sm font-semibold hover:text-secondary-light transition-colors">Web Dev</a>
+                        </li>
+                        <li><a href="#services"
+                                class="text-sm font-semibold hover:text-secondary-light transition-colors">Bot
+                                Infrastructure</a></li>
+                        <li><a href="terms-of-service.html"
+                                class="text-sm font-semibold hover:text-secondary-light transition-colors">Terms of
+                                Service</a></li>
+                        <li><a href="privacy-policy.html"
+                                class="text-sm font-semibold hover:text-secondary-light transition-colors">Privacy
+                                Policy</a></li>
+                    </ul>
+                </div>
+
+                <!-- Connect -->
+                <div>
+                    <h4 class="text-sm font-black uppercase tracking-widest mb-6 opacity-40">Connect</h4>
+                    <div class="flex gap-4 mb-6">
+                        <a href="https://github.com/hackerplayz41" target="_blank"
+                            class="size-10 rounded-full border border-background/20 flex items-center justify-center hover:bg-background hover:text-primary transition-all">
+                            <svg class="size-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                            </svg>
+                        </a>
+                        <a href="https://discord.com/invite/DugRxFGKGD" target="_blank"
+                            class="size-10 rounded-full border border-background/20 flex items-center justify-center hover:bg-background hover:text-primary transition-all">
+                            <svg class="size-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z" />
+                            </svg>
+                        </a>
+                    </div>
+                    <a href="mailto:hello@blockcode.in"
+                        class="inline-flex items-center gap-2 text-sm font-bold opacity-60 hover:opacity-100 transition-opacity underline-offset-4 hover:underline">
+                        <span class="material-symbols-outlined text-base">mail</span>
+                        hello@blockcode.in
+                    </a>
+                </div>
+            </div>
+
+            <div
+                class="flex flex-col md:flex-row justify-between items-center gap-6 pt-8 border-t border-background/10 opacity-55 text-xs">
+                <p>© 2026 Utkarsh Halwai. All rights reserved by Utkarsh Halwai.</p>
+                <div class="flex gap-8">
+                    <a class="hover:underline" href="privacy-policy.html">Privacy Policy</a>
+                    <a class="hover:underline" href="terms-of-service.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
