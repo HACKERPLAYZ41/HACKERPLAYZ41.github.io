@@ -11,8 +11,8 @@ const Footer = () => {
                         <div className="flex items-center gap-3 mb-6">
                             <div className="bg-background p-1.5 rounded-lg text-primary">
                                 <svg className="size-6" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                                    <path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z"
-                                        fill="currentColor" fill-rule="evenodd"></path>
+                                    <path clipRule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z"
+                                        fill="currentColor" fillRule="evenodd"></path>
                                 </svg>
                             </div>
                             <span className="text-2xl font-black">Utkarsh</span>

@@ -45,8 +45,8 @@ const Header = () => {
                     <NavLink to="/" className="flex items-center gap-3 group">
                         <div className="bg-primary p-1.5 rounded-lg text-white group-hover:scale-105 transition-transform">
                             <svg className="size-6" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                                <path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z"
-                                    fill="currentColor" fill-rule="evenodd"></path>
+                                <path clipRule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z"
+                                    fill="currentColor" fillRule="evenodd"></path>
                             </svg>
                         </div>
                         <span className="text-xl font-black tracking-tight text-primary">Utkarsh</span>

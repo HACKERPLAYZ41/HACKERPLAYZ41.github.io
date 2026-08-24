@@ -1,36 +1,59 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send, Mail, MapPin, MessageSquare, Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
+import HCaptcha from '@hcaptcha/react-hcaptcha';
 
 const Contact = () => {
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
     const [message, setMessage] = useState('');
+    const [hcaptchaToken, setHcaptchaToken] = useState<string | null>(null);
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        
+        if (!hcaptchaToken) {
+            setStatus('error');
+            setMessage('Please complete the hCaptcha check before submitting.');
+            return;
+        }
+
         setStatus('loading');
 
         const formData = new FormData(e.currentTarget);
         const data = Object.fromEntries(formData.entries());
 
         try {
-            // Pointing to the secure PHP backend
-            const response = await fetch('/minecarftlockdown.fun/api/contact/index.php', {
+            const response = await fetch('https://api.web3forms.com/submit', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Accept': 'application/json'
                 },
-                body: JSON.stringify(data),
+                body: JSON.stringify({
+                    access_key: '60dea98d-be02-45ba-ad87-68872ac5d917',
+                    name: data.name,
+                    email: data.email,
+                    subject: data.subject,
+                    message: data.message,
+                    'h-captcha-response': hcaptchaToken
+                }),
             });
 
-            const result = await response.json();
+            const text = await response.text();
+            let result;
+            try {
+                result = JSON.parse(text);
+            } catch {
+                throw new Error('Server response was not JSON: ' + text);
+            }
 
             if (response.ok && result.success) {
                 setStatus('success');
                 setMessage('Message sent successfully! I will get back to you soon.');
                 (e.target as HTMLFormElement).reset();
+                setHcaptchaToken(null);
             } else {
-                throw new Error(result.message || 'Something went wrong.');
+                throw new Error(result.message || 'Failed to submit form.');
             }
         } catch (err: any) {
             setStatus('error');
@@ -123,6 +146,14 @@ const Contact = () => {
                                 <textarea
                                     id="message" name="message" required rows={5} placeholder="Tell me about your project..."
                                     className="bg-white border border-primary/10 px-5 py-4 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-semibold resize-none"
+                                />
+                            </div>
+
+                            <div className="my-2 flex justify-center">
+                                <HCaptcha
+                                    sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
+                                    onVerify={(token) => setHcaptchaToken(token)}
+                                    onExpire={() => setHcaptchaToken(null)}
                                 />
                             </div>
 
