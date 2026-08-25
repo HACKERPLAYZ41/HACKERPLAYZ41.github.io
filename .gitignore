@@ -1,10 +1,17 @@
 # Ignore local working projects, zips and react app from being uploaded to GitHub root
 HACKERPLAYZ41.github.io-8194502811a4948a3438715bc8174da69b8eb51a/
 HACKERPLAYZ41.github.io-8194502811a4948a3438715bc8174da69b8eb51a.zip
+HACKERPLAYZ41.github.io-main/
+HACKERPLAYZ41.github.io-main.zip
 HACKERPLAYZ41.github.io.rar
 HACKERPLAYZ41.github.io/
+PROJECTS_DOMAINS_MAPPING.txt
+utkarsh-halwai.jpg
 react-portfolio/
 New folder/
 minecarftlockdown.fun/
 node_modules/
 dist/
+*.zip
+*.rar
+
