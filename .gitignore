@@ -15,7 +15,6 @@ dist/
 *.zip
 *.rar
 login page/
-photo/
 *.gif
 about.html
 blog.html
@@ -24,7 +23,6 @@ terms-of-service.html
 privacy-policy.html
 birthday-main.html
 CARS.html
-DONT_READ_ME.md
 Final.html
 LICENSE
 background.jpg
